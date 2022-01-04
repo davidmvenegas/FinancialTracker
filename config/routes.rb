@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  
-  resources :savings_items
-  resources :budget_items
-  resources :income_items
-  resources :users
-  # Routing logic: fallback requests for React Router.
-  # Leave this here to help deploy your app later!
-  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  resources :sessions, only: [:create]
+  resources :registrations, only: [:create]
+  delete :logout, to: "sessions#logout"
+  get :logged_in, to: "sessions#logged_in"
+
+  get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end

@@ -13,8 +13,10 @@ function App() {
   useEffect(() => {
     fetch("/users")
       .then((r) => r.json())
-      .then((users) => console.log(users));
+      .then((users) => console.log(users))
   }, []);
+
+  
 
   return (
     <Fragment>
