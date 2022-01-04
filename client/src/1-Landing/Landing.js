@@ -1,23 +1,20 @@
-import { React, useState } from 'react'
-import Login from './Login'
-import Registration from './Registration'
+import { React } from 'react'
 import { Link } from 'react-router-dom'
+import { useFinanceContext } from '../FinanceContext'
+import Registration from './Registration'
+import Login from './Login'
 
 function Landing() {
-    const [user, setUser] = useState(null)
-
-    // useEffect(() => {
-    //     fetch("/me").then((response) => {
-    //         if (response.ok) response.json().then((user) => setUser(user))
-    //     })
-    // }, [])
+    const { loggedInStatus } = useFinanceContext()
 
     return (
         <div>
             <h1>LANDING PAGE</h1>
-            {(user) ? <h2>Welcome, {user.username}!</h2> : <Login onLogin={setUser} />}
-            <br />
-            {(user) ? <h2>Welcome, {user.username}!</h2> : <Registration onLogin={setUser} />}
+            <p>Status: {loggedInStatus}</p>
+            <h1>REGISTER</h1>
+            <Registration/>
+            <h1>LOGIN</h1>
+            <Login/>
             <Link to='/main'>Go to Main</Link>
         </div>
     )
