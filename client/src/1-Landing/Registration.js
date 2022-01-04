@@ -1,3 +1,4 @@
+import './registration.css'
 import { React, useState } from 'react'
 import axios from 'axios'
 import { useFinanceContext } from '../FinanceContext'

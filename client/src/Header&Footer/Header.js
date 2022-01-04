@@ -1,3 +1,4 @@
+import './header.css'
 import React from 'react'
 import { useFinanceContext } from '../FinanceContext'
 import axios from 'axios'
