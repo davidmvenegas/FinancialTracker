@@ -7,7 +7,7 @@ function Header({ onLogout }) {
     const { handleLogout } = useFinanceContext()
 
     function handleLogoutClick() {
-        axios.delete('http://localhost:3000/logout', { withCredentials: true })
+        axios.delete('/logout', { withCredentials: true })
         .then(() => handleLogout())
         .catch(err => console.error(err))
     }

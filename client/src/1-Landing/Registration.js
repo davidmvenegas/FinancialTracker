@@ -15,7 +15,7 @@ function Registration() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        axios.post('http://localhost:3000/registrations', {
+        axios.post('/registrations', {
             user: {
                 email: email,
                 password: password,

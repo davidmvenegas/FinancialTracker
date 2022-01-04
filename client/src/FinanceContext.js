@@ -11,7 +11,7 @@ export const FinanceContextProvider = ({ children }) => {
     const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN")
 
     useEffect(() => {
-        axios.get('http://localhost:3000/logged_in', { withCredentials: true })
+        axios.get('/logged_in', { withCredentials: true })
         .then(res => {
             if (res.data.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
                 setUser(res.data)

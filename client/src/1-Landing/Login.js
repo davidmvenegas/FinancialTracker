@@ -13,7 +13,7 @@ function Login() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        axios.post('http://localhost:3000/sessions', {
+        axios.post('/sessions', {
             user: {
                 email: email,
                 password: password,
