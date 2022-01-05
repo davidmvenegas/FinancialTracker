@@ -1,3 +1,18 @@
 .main-container {
     min-height: 69vh;
 }
+.main-section-title {
+    font-size: 4.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+    width: 20rem;
+    line-height: 1.05;
+}
+.main-section-description {
+    padding-top: 1rem;
+    font-size: 1.6rem;
+    font-weight: 200;
+    text-transform: capitalize;
+    text-align: center;
+}

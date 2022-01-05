@@ -1,4 +1,96 @@
 .income-container {
     min-height: 55vh;
     background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.income-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    margin: 2.5rem 0;
+}
+.income-category-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: .5rem;
+}
+.income-category-amount {
+    display: flex;
+}
+.income-category-amount span {
+    font-size: 3rem;
+    font-weight: 400;
+}
+.income-category-amount h2 {
+    font-size: 3rem;
+    font-weight: 400;
+}
+.income-form-container {
+    width: 70%;
+    border: 1px solid #888888;
+    border-radius: .25rem;
+}
+.income-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+.income-form-header {
+    width: 26.5%;
+    height: 4.5rem;
+    background-color: white;
+    font-size: 1.8rem;
+    padding-left: 2rem;
+    border: none;
+}
+.income-submit-button {
+    width: 12.5%;
+    height: 4.5rem;
+    color: black;
+    background-color: #ddd;
+    font-size: 1.6rem;
+    font-weight: 100;
+    border: none;
+    border-left: 2px solid #888888;
+    outline: none;
+    cursor: pointer;
+}
+.income-submit-button:hover {
+    background-color: #cccccc;
+}
+.income-body {
+    margin: 2rem 0;
+    width: 70%;
+    box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.15);
+    max-height: 50rem;
+    overflow-y: auto;
+}
+.income-body table {
+    font-family: sans-serif;
+    font-size: 1.4rem;
+    width: 100%;
+    border-collapse: collapse;
+}
+.income-body table thead tr {
+    background-color: #009879;
+    color: white;
+    text-align: left;
+}
+.income-body table th,
+.income-body table td {
+    padding: 1.2rem 1.5rem;
+}
+.income-body table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+.income-body table tbody tr:nth-of-type(2n+0) {
+    background-color: #e6e6e6;
+}
+.income-body table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
 }
