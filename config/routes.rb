@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   delete :logout, to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"
 
+  resources :users
+  resources :income_items
+  resources :budget_items
+  resources :savings_items
+
   get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end
