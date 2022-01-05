@@ -2,8 +2,10 @@ import './header.css'
 import React from 'react'
 import { useFinanceContext } from '../FinanceContext'
 import axios from 'axios'
+import Logo from '../images/logo.png'
+import UserIcon from '../images/profile_icon.png'
 
-function Header({ onLogout }) {
+function Header() {
     const { handleLogout } = useFinanceContext()
 
     function handleLogoutClick() {
@@ -14,8 +16,16 @@ function Header({ onLogout }) {
 
     return (
         <div>
-            <h1>HEADER</h1>
-            <button onClick={() => handleLogoutClick()}>Logout</button>
+            <div className="header-container">
+                <div className="header-box1">
+                    <img src={Logo} alt="Logo" />
+                    <h2>The Financial Tracker <span>&reg;</span></h2>
+                </div>
+                <div className="header-box2">
+                    <img className='header-profile' src={UserIcon} alt="Profile" />
+                    <button className='header-logout' onClick={() => handleLogoutClick()}>LOG OUT</button>
+                </div>
+            </div>
         </div>
     )
 }
