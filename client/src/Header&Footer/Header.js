@@ -1,5 +1,6 @@
 import './header.css'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useFinanceContext } from '../FinanceContext'
 import axios from 'axios'
 import Logo from '../images/logo.png'
@@ -22,7 +23,7 @@ function Header() {
                     <h2>The Financial Tracker <span>&reg;</span></h2>
                 </div>
                 <div className="header-box2">
-                    <img className='header-profile' src={UserIcon} alt="Profile" />
+                    <Link to='/profile'><img className='header-profile' src={UserIcon} alt="Profile" /></Link>
                     <button className='header-logout' onClick={() => handleLogoutClick()}>LOG OUT</button>
                 </div>
             </div>
