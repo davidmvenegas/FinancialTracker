@@ -8,11 +8,11 @@ function Main() {
 
     return (
         <div>
-            <h1>MAIN PAGE</h1>
-            <p>Status: {loggedInStatus}</p>
-            <Link to='/'>Go back</Link>
-            <br />
-            <Link to='/profile'>Go to Profile</Link>
+            <div className="main-container">
+                <h1>MAIN PAGE</h1>
+                <p>Status: {loggedInStatus}</p>
+                <Link to='/'>Go back</Link>
+            </div>
         </div>
     )
 }
