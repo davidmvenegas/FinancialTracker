@@ -11,7 +11,7 @@ function Footer() {
                 whatsoever for any loss or damage howsoever arising.</p>
             </div>
             <div className="footer-bottom">
-                <p className="footer-copyright">Copyright &copy;2022 - Designed and Built By <span><a target="_blank" href="https://github.com/davidmvenegas" rel="noreferrer">David Venegas</a></span> & <span><a target="_blank" href="https://github.com/Smith-Reesie" rel="noreferrer">Reese Smith</a></span></p>
+                <p className="footer-copyright">Copyright &copy;2022 - Designed and Built By <span><a target="_blank" href="https://github.com/davidmvenegas" rel="noreferrer">David Venegas</a></span></p>
             </div>
         </footer>
     )

@@ -6,8 +6,8 @@ function Income() {
         <div className='income-container'>
             <div className="income-header">
                 <div className="income-header-box1">
-                    <h1 className='main-section-title'>Income Tracker</h1>
-                    <p className='main-section-description'>Keep Track of your Income</p>
+                    <h1 className='main-section-title'>Personal Ledger</h1>
+                    <p className='main-section-description'>Organize Your Finances</p>
                 </div>
                 <div className="income-header-box2">
                     <h2 className='income-category-title'>Savings</h2>
@@ -24,8 +24,8 @@ function Income() {
             </div>
             <div className="income-form-container">
                 <form className="income-form">
-                    <input className='income-form-header' type="text" placeholder='Description...' />
-                    <input className='income-form-header' type="number" placeholder='Amount...' />
+                    <input className='income-form-header' type="text" placeholder='Add description...' />
+                    <input className='income-form-header' type="number" placeholder='Add amount...' />
                     <select className="income-form-header">
                         <option disabled selected hidden>Category...</option>
                         <option value="food">Food</option>

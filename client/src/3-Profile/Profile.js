@@ -8,7 +8,7 @@ function Profile() {
             <div className="profile-container">
                 <Link className='profile-go-back' to='/main'>Go back</Link>
                 <div className="profile-wrapper">
-                    <h1 className="profile-title">Your Profile</h1>
+                    <h1 className="profile-title">Customize Your Profile</h1>
                     <form className="profile-form">
                         <div className="profile-input-wrapper">
                             <span className="profile-input-label">First Name</span>

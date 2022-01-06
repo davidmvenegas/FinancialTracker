@@ -1,4 +1,94 @@
 .budget-container {
-    min-height: 55vh;
     background-color: #dddddd;
+    height: 70rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.budget-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    margin: 2.5rem 0;
+}
+.budget-pie {
+    height: 17rem;
+}
+.budget-header-box3 {
+    height: 14.35rem;
+    width: 16.5rem;
+    background-color: #e8e8e8;
+    border-radius: .5rem;
+    padding: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+}
+.budget-outline-title {
+    margin-top: .25rem;
+    font-size: 2.125rem;
+}
+.budget-outline-wrapper {
+    margin-top: 1.125rem;
+}
+.budget-outline-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3rem;
+}
+.budget-outline-name {
+    font-size: 1.6rem;
+    font-weight: 300;
+}
+.budget-outline-amount {
+    font-size: 1.45rem;
+}
+.budget-outline-separator {
+    margin: .35rem 0 .15rem;
+    height: .1rem;
+    width: 100%;
+    background-color: #888;
+}
+.budget-body {
+    margin: 1rem 0 4rem;
+    width: 70%;
+    box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.budget-body table {
+    font-family: sans-serif;
+    font-size: 2rem;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #e8e8e8;
+}
+.budget-body table thead tr {
+    background-color: #006598;
+    color: white;
+    text-align: center;
+}
+.budget-body table th,
+.budget-body table td {
+    padding: 1.2rem 2rem;
+    text-align: center;
+}
+.budget-body table tbody tr {
+    border-bottom: 1px solid #bbb;
+}
+.budget-editable {
+    font-size: 2rem;
+    background-color: transparent;
+    margin-left: .25rem;
+    width: 8rem;
+    padding: .25rem;
+    border: none;
+    outline: none;
+}
+.budget-editable::placeholder {
+    color: #006598;
+}
+.budget-editable:hover,
+.budget-editable:focus {
+    border: 2px solid #006598;
+    border-radius: .5rem;
 }
