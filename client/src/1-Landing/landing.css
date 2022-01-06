@@ -8,13 +8,13 @@
 	justify-content: center;
 }
 .login-page .box{
-	/* background-image: url(); */
+	background-image: url('../images/login-img.jpg');
 	background-size: cover;
-	background-position: -16rem center;
+	background-position: -12.5rem center;
 	background-repeat: repeat-x;
-	flex: 0 0 70rem;
-	max-width: 70rem;
-	min-height: 48rem;
+	flex: 0 0 80rem;
+	width: 100rem;
+	height: 48rem;
 	box-shadow: 0 0 1rem #dddddd;
 	display: flex;
 	flex-wrap: wrap;
@@ -23,7 +23,7 @@
 	transition: all 0.5s ease-in-out;
 }
 .login-page .box.slide-active{
-	background-position:16rem center;
+	background-position: 28.5rem center;
 }
 .login-page .box::before{
 	content: '';
@@ -31,19 +31,19 @@
 	left:0;
 	top:0;
 	width: 100%;
-	height:100%;
+	height: 100%;
 	z-index: -1;
 	background-color: rgba(0,0,0,0.4);
 }
 .login-page .box .left,
 .login-page .box .right{
-	flex:0 0 50%;
+	flex: 0 0 50%;
 	max-width: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	padding:4rem 0;
+	padding: 4rem 0;
 }
 .login-page .box .left h3,
 .login-page .box .right h3{
@@ -68,11 +68,11 @@
 .login-page .box .form{
 	position: absolute;
 	background-color: #ffffff;
-	height: 100%;
-	width: 50%;
+	height: 87.5%;
+	width: 45%;
 	right:0;
 	top:0;
-	padding:3rem;
+	padding: 3rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -82,7 +82,7 @@
 	right: 50%;
 }
 .login-page .box .form h3{
-	font-size: 2rem;
+	font-size: 2.25rem;
 	color:#000000;
 	margin:0 0 3rem;
 }
@@ -95,6 +95,7 @@
 	transition: all 0.5s ease-in-out;
 }
 .login-page .box .form .form-control{
+	position: relative;
 	width: 100%;
 	height: 4.5rem;
 	font-size: 1.6rem;
@@ -113,7 +114,7 @@
 .login-page .box .form .submit-btn {
 	width: 100%;
 	height: 4rem;
-	background-color: #E91E63;
+	background-color: limegreen;
 	border:none;
 	border-radius: 2rem;
 	color:#ffffff;
@@ -131,6 +132,10 @@
 	text-align: center;
 	cursor: pointer;
 }
+.lost-password-form span {
+	font-size: 1.5rem;
+	margin: 0 .5rem;
+}
 .login-page .box .form h5{
 	font-size: 1.6rem;
 	color:#555555;
@@ -142,6 +147,29 @@
 	visibility: hidden;
 	opacity: 0;
 	overflow: hidden;
+}
+.landing-input-focus {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+.landing-input-focus::before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    transition: all .4s ease;
+    background-color: limegreen;
+}
+.form-control:focus + .landing-input-focus::before {
+    width: 100%;
 }
 
 @media(max-width: 767px){
@@ -155,12 +183,12 @@
 		width: 100%;
 		position: relative;
 		right: auto;
-		top:auto;
+		top: auto;
 		height: auto;
 	}
 	.login-page .box,
 	.login-page .box.slide-active{
-        background-position: center;
+        background-position: -14rem -12rem;
 	}
 	.login-page .box .left h3, .login-page .box .right h3{
 		font-size: 1.6rem;

@@ -94,9 +94,11 @@ function Landing() {
                             <h3>Log In</h3>
                             <div className="form-group">
                                 <input onChange={handleLogEmailChange} type="text" placeholder="Email Address" className="form-control" required />
+                                <span className="landing-input-focus"></span>
                             </div>
                             <div className="form-group">
                                 <input onChange={handleLogPasswordChange} type="password" placeholder="Password" className="form-control" required />
+                                <span className="landing-input-focus"></span>
                             </div>
                             <button type="submit" className="submit-btn">Login</button>
                             <p className="lost-pass-btn">Lost Your Password ?</p>
@@ -105,15 +107,19 @@ function Landing() {
                             <h3>Register</h3>
                             <div className="form-group">
                                 <input type="text" placeholder="Name" className="form-control" required />
+                                <span className="landing-input-focus"></span>
                             </div>
                             <div className="form-group">
-                                <input onChange={handleRegEmailChange} type="email" placeholder="Email Address*" className="form-control" required />
+                                <input onChange={handleRegEmailChange} type="email" placeholder="Email Address" className="form-control" required />
+                                <span className="landing-input-focus"></span>
                             </div>
                             <div className="form-group">
-                                <input onChange={handleRegPasswordChange} type="password" placeholder="Password*" className="form-control" required />
+                                <input onChange={handleRegPasswordChange} type="password" placeholder="Password" className="form-control" required />
+                                <span className="landing-input-focus"></span>
                             </div>
                             <div className="form-group">
                                 <input onChange={handlePasswordConfirmationChange} type="password" placeholder="Confirm Password" className="form-control" required />
+                                <span className="landing-input-focus"></span>
                             </div>
                             <button type="submit" className="submit-btn">Register</button>
                             <p className="lost-pass-btn">Lost Your Password ?</p>
@@ -122,7 +128,7 @@ function Landing() {
                             <h3>Lost Your Password ?</h3>
                             <h5>You will receive a link to create a new password via email.</h5>
                             <div className="form-group">
-                                <input type="text" placeholder="Email Address*" className="form-control" />
+                                <input type="text" placeholder="Email Address" className="form-control" required />
                             </div>
                             <button type="submit" className="submit-btn">Reset Password</button>
                             <p><span className="login-btn">Login</span> | <span className="register-btn">Register</span></p>
