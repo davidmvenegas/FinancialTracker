@@ -14,16 +14,19 @@
     margin: 2.5rem 0;
 }
 .savings-category-title {
-    font-size: 1.8rem;
-    margin-bottom: 1.25rem;
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
+.savings-category-title span {
+    font-weight: 300;
+}
 .savings-progress-wrapper {
-    background-color: #777;
-    width: 35rem;
-    height: 3.5rem;
+    background-color: #888;
+    width: 42.5rem;
+    height: 4rem;
     border-radius: 5rem;
-    box-shadow: 0 0 2.5rem #ea35479a;
+    box-shadow: 0 .5rem .75rem rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
 }
@@ -42,27 +45,6 @@
     margin-top: 1.125rem;
     text-align: center;
     font-size: 2.5rem;
-}
-.add-to-savings-form input {
-    border: 2px solid #555;
-    border-radius: 1rem 0 0 1rem;
-    box-sizing: border-box;
-    width: 20rem;
-    height: 3.5rem;
-    padding-left: 1rem;
-}
-.add-to-savings-form button {
-    border: 2px solid #555;
-    border-left: none;
-    border-radius: 0 1rem 1rem 0;
-    box-sizing: border-box;
-    width: 5rem;
-    height: 3.5rem;
-    background-color: #ddd;
-}
-.add-to-savings-form button:hover {
-    background-color: #eee;
-    cursor: pointer;
 }
 .savings-form-container {
     width: 70%;
@@ -101,7 +83,6 @@
     outline: none;
     cursor: pointer;
 }
-
 .savings-body {
     margin: 1rem 0 4rem;
     width: 71%;
@@ -128,18 +109,37 @@
     text-align: center;
     margin: 1.5rem 0;
 }
-.savings-card-notes {
-    font-size: 1.2rem;
-    text-align: center;
-    margin: 1rem 0 2rem;
-    height: 4.5rem;
+.add-to-savings-form input {
+    border: 1px solid #555;
+    border-radius: 1rem 0 0 1rem;
+    box-sizing: border-box;
+    width: 12rem;
+    height: 3.5rem;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    outline: none;
+}
+.add-to-savings-form button {
+    border: 1px solid #555;
+    border-left: none;
+    border-radius: 0 1rem 1rem 0;
+    box-sizing: border-box;
+    width: 5rem;
+    height: 3.5rem;
+    background-color: #eee;
+}
+.add-to-savings-form button:hover {
+    background-color: #ddd;
+    cursor: pointer;
 }
 .savings-card-date-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1.25rem;
-
+}
+.savings-header-box2 {
+    display: flex;
 }
 .savings-card-date-box h2 {
     font-size: 1.8rem;

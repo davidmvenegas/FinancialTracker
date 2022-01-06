@@ -10,7 +10,7 @@ function Income() {
                     <p className='main-section-description'>Organize Your Finances</p>
                 </div>
                 <div className="income-header-box2">
-                    <h2 className='income-category-title'>Savings</h2>
+                    <h2 className='income-category-title'>Income</h2>
                     <div className="income-category-amount"><h2><span>$</span> 12,000</h2></div>
                 </div>
                 <div className="income-header-box3">
@@ -23,22 +23,31 @@ function Income() {
                 </div>
             </div>
             <div className="income-form-container">
-                <form className="income-form">
-                    <input className='income-form-header' type="text" placeholder='Add description...' />
-                    <input className='income-form-header' type="number" placeholder='Add amount...' />
-                    <select className="income-form-header">
-                        <option disabled selected hidden>Category...</option>
-                        <option value="food">Food</option>
-                        <option value="housing">Housing</option>
-                        <option value="transportation">Transportation</option>
-                        <option value="personal_care">Personal Care</option>
-                        <option value="education">Education</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="savings">Savings</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <button className='income-submit-button' type="submit">Add Transaction</button>
-                </form>
+                <div className="income-box">
+                    <form className='income-search-form'>
+                        <input className='income-search-box' type="text" placeholder='Search' />
+                    </form>
+                    <form className="income-form">
+                        <input id='first-income-form' className='income-form-header' type="text" placeholder='Description...' />
+                        <input className='income-form-header' type="number" placeholder='Amount...' />
+                        <select className='income-form-header income-form-select'>
+                            <option disabled selected hidden>Type...</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                        <select id='last-income-form' className="income-form-header income-form-select">
+                            <option disabled selected hidden>Category...</option>
+                            <option value="food">Food</option>
+                            <option value="housing">Housing</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="personal_care">Personal Care</option>
+                            <option value="education">Education</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <button className='income-submit-button' type="submit">ADD</button>
+                    </form>
+                </div>
             </div>
             <div className="income-body">
                 <table>
@@ -50,7 +59,7 @@ function Income() {
                             <th>Category</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='income-table-body'>
                         <tr>
                             <td>Burger King</td>
                             <td>01/04/2022</td>

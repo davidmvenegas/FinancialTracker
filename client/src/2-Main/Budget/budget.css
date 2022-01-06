@@ -17,8 +17,8 @@
     height: 17rem;
 }
 .budget-header-box3 {
-    height: 14.35rem;
-    width: 16.5rem;
+    height: 16rem;
+    width: 18rem;
     background-color: #e8e8e8;
     border-radius: .5rem;
     padding: 1rem;
@@ -26,7 +26,7 @@
 }
 .budget-outline-title {
     margin-top: .25rem;
-    font-size: 2.125rem;
+    font-size: 2rem;
 }
 .budget-outline-wrapper {
     margin-top: 1.125rem;
@@ -38,11 +38,11 @@
     height: 3rem;
 }
 .budget-outline-name {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 300;
 }
 .budget-outline-amount {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
 }
 .budget-outline-separator {
     margin: .35rem 0 .15rem;
@@ -83,12 +83,4 @@
     padding: .25rem;
     border: none;
     outline: none;
-}
-.budget-editable::placeholder {
-    color: #006598;
-}
-.budget-editable:hover,
-.budget-editable:focus {
-    border: 2px solid #006598;
-    border-radius: .5rem;
 }

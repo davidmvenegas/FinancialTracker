@@ -10,14 +10,12 @@ function Savings() {
                     <p className='main-section-description'>Save for the Future</p>
                 </div>
                 <div className="savings-header-box2">
-                    <h2 className='savings-category-title'>My Savings Goal: ($1,200 of $5,000)</h2>
-                    <div className="savings-progress-wrapper">
-                        <span className="savings-progress" id="savings-progress"></span>
+                    <div className="savings-progress-container">
+                        <h2 className='savings-category-title'>My Savings Goal: <span>($1,200 of $5,000)</span></h2>
+                        <div className="savings-progress-wrapper">
+                            <span className="savings-progress" id="savings-progress"></span>
+                        </div>
                     </div>
-                    <form className="add-to-savings-form">
-                        <input type="number"  placeholder='$' required/>
-                        <button type="submit">Add</button>
-                    </form>
                 </div>
             </div>
             <div className="savings-form-container">
@@ -33,9 +31,10 @@ function Savings() {
                 <div className="savings-card">
                     <div className="savings-card-wrapper">
                         <h1 className="savings-card-title">SAVING_TITLE</h1>
-                        <p className='savings-card-notes'>Lorem, ipsum dolor sit 
-                            amet adipisicing elit. Maiores cum ex nihil 
-                            magni  iste labore sequi at vel possimus.</p>
+                        <form className="add-to-savings-form">
+                            <input type="number"  placeholder='$' required/>
+                            <button type="submit">Add</button>
+                        </form>
                         <div className="savings-card-date-box">
                             <h2>Target Date:</h2>
                             <h4>05/01/2022</h4>

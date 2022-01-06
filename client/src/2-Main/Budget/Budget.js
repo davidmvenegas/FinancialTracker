@@ -54,37 +54,37 @@ function Budget() {
                         <tr>
                             <td>Food</td>
                             <td>$0</td>
-                            <td>$<input className='budget-editable' type="number" placeholder='N/A' /></td>
+                            <td>$<input className='budget-editable' type="number" placeholder='Edit...' /></td>
                         </tr>
                         <tr>
                             <td>Housing</td>
                             <td>$0</td>
-                            <td>$<input className='budget-editable' type="number" placeholder='N/A' /></td>
+                            <td>$<input className='budget-editable' type="number" placeholder='Edit...' /></td>
                         </tr>
                         <tr>
                             <td>Transportation</td>
                             <td>$0</td>
-                            <td>$<input className='budget-editable' type="number" placeholder='N/A' /></td>
+                            <td>$<input className='budget-editable' type="number" placeholder='Edit...' /></td>
                         </tr>
                         <tr>
                             <td>Personal Care</td>
                             <td>$0</td>
-                            <td>$<input className='budget-editable' type="number" placeholder='N/A' /></td>
+                            <td>$<input className='budget-editable' type="number" placeholder='Edit...' /></td>
                         </tr>
                         <tr>
                             <td>Education</td>
                             <td>$0</td>
-                            <td>$<input className='budget-editable' type="number" placeholder='N/A' /></td>
+                            <td>$<input className='budget-editable' type="number" placeholder='Edit...' /></td>
                         </tr>
                         <tr>
                             <td>Entertainment</td>
                             <td>$0</td>
-                            <td>$<input className='budget-editable' type="number" placeholder='N/A' /></td>
+                            <td>$<input className='budget-editable' type="number" placeholder='Edit...' /></td>
                         </tr>
                         <tr>
                             <td>Other</td>
                             <td>$0</td>
-                            <td>$<input className='budget-editable' type="number" placeholder='N/A' /></td>
+                            <td>$<input className='budget-editable' type="number" placeholder='Edit...' /></td>
                         </tr>
                     </tbody>
                 </table>

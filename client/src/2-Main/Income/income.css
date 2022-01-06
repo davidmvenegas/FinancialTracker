@@ -31,50 +31,96 @@
 }
 .income-form-container {
     width: 70%;
-    border: 1px solid #888888;
     border-radius: .5rem;
-    margin-top: 1.5rem;
+    margin: .75rem 0 .75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.income-form {
+.income-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: white;
+    width: 100%;
+}
+.income-search-form {
+    border: none;
+    width: 29%;
+}
+.income-search-box {
+    height: 4.5rem;
+    width: 100%;
+    color: #777;
+    background-color: #ccc;
+    border: none;
+    border-radius: .5rem;
+    padding-left: 1.35rem;
+    font-size: 1.7rem;
+    outline: none;
+}
+.income-search-box:focus {
+    background-color: #c5c5c5;
+}
+.income-search-box::placeholder {
+    color: #777;
+}
+.income-form {
+    border: none;
+    display: flex;
+    align-items: center;
+    width: 70%;
+    justify-content: space-between;
+    background-color: #999;
     border-radius: .5rem;
 }
 .income-form-header {
-    font-size: 1.8rem;
-    width: 26.5%;
-    height: 4.5rem;
-    background-color: white;
-    border-radius: .5rem;
-    padding-left: 2rem;
-    border: none;
-}
-.income-form-header::placeholder {
-    color: black;
-}
-.income-submit-button {
-    width: 12.5%;
+    font-size: 1.65rem;
+    font-weight: 500;
+    width: 21.75%;
     height: 4.5rem;
     color: white;
-    background-color: #555;
-    font-size: 1.5rem;
-    font-weight: 100;
+    background-color: #999;
+    padding-left: 1.7rem;
     border: none;
-    border-radius: 0 .5rem .5rem 0;
+    border-right: 1px solid #888;
+}
+#first-income-form {
+    border-radius: .5rem 0 0 .5rem;
+}
+#last-income-form {
+    border-right: none;
+}
+.income-form-header::placeholder {
+    color: white;
+}
+.income-form-select {
+    padding-left: 1rem;
+    cursor: pointer;
+}
+.income-submit-button {
+    width: 11.5%;
+    height: 4.5rem;
+    color: white;
+    background-color: #333;
+    font-size: 1.65rem;
+    font-weight: 600;
+    border: none;
     outline: none;
+    border-radius: 0 .5rem .5rem 0;
     cursor: pointer;
 }
 .income-submit-button:hover {
-    background-color: #666;
-    text-decoration: underline;
+    background-color: #222;
 }
 .income-body {
     margin: 1rem 0 4rem;
     width: 70%;
     box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.15);
-    max-height: 50rem;
+    border-bottom: 4px solid #009879;
+}
+.income-table-body {
+    display: block;
+    max-height: 30rem;
     overflow-y: auto;
 }
 .income-body table {
@@ -88,6 +134,12 @@
     color: white;
     text-align: left;
 }
+.income-body table thead,
+.income-body table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
 .income-body table th,
 .income-body table td {
     padding: 1.4rem 1.6rem;
@@ -97,7 +149,4 @@
 }
 .income-body table tbody tr:nth-of-type(2n+0) {
     background-color: #e6e6e6;
-}
-.income-body table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
 }
