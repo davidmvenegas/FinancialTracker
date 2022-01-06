@@ -11,8 +11,8 @@ function Savings() {
                 </div>
                 <div className="savings-header-box2">
                     <h2 className='savings-category-title'>My Savings Goal: ($1,200 of $5,000)</h2>
-                    <div class="savings-progress-wrapper">
-                        <span class="savings-progress" id="savings-progress"></span>
+                    <div className="savings-progress-wrapper">
+                        <span className="savings-progress" id="savings-progress"></span>
                     </div>
                     <form className="add-to-savings-form">
                         <input type="number"  placeholder='$' required/>
