@@ -1,5 +1,6 @@
 import './income.css'
 import React from 'react'
+import Delete from '../../images/red_x_icon.png'
 
 function Income() {
     return (
@@ -57,6 +58,8 @@ function Income() {
                             <th>Date</th>
                             <th>Amount</th>
                             <th>Category</th>
+                            <th style={{width: '2.5%'}}></th>
+                            <th style={{width: '2.5%'}}></th>
                         </tr>
                     </thead>
                     <tbody className='income-table-body'>
@@ -65,42 +68,63 @@ function Income() {
                             <td>01/04/2022</td>
                             <td>$40</td>
                             <td>Food</td>
+                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
                         </tr>
                         <tr>
-                            <td>Lululemon</td>
-                            <td>01/12/2022</td>
-                            <td>$100</td>
-                            <td>Personal Care</td>
+                            <td>Burger King</td>
+                            <td>01/04/2022</td>
+                            <td>$40</td>
+                            <td>Food</td>
+                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
                         </tr>
                         <tr>
-                            <td>Paycheck</td>
-                            <td>01/14/2022</td>
-                            <td>$2000</td>
-                            <td>Savings</td>
+                            <td>Burger King</td>
+                            <td>01/04/2022</td>
+                            <td>$40</td>
+                            <td>Food</td>
+                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
                         </tr>
                         <tr>
-                            <td>Paycheck</td>
-                            <td>01/14/2022</td>
-                            <td>$2000</td>
-                            <td>Savings</td>
+                            <td>Burger King</td>
+                            <td>01/04/2022</td>
+                            <td>$40</td>
+                            <td>Food</td>
+                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
                         </tr>
                         <tr>
-                            <td>Paycheck</td>
-                            <td>01/14/2022</td>
-                            <td>$2000</td>
-                            <td>Savings</td>
+                            <td>Burger King</td>
+                            <td>01/04/2022</td>
+                            <td>$40</td>
+                            <td>Food</td>
+                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
                         </tr>
                         <tr>
-                            <td>Paycheck</td>
-                            <td>01/14/2022</td>
-                            <td>$2000</td>
-                            <td>Savings</td>
+                            <td>Burger King</td>
+                            <td>01/04/2022</td>
+                            <td>$40</td>
+                            <td>Food</td>
+                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
                         </tr>
                         <tr>
-                            <td>Paycheck</td>
-                            <td>01/14/2022</td>
-                            <td>$2000</td>
-                            <td>Savings</td>
+                            <td>Burger King</td>
+                            <td>01/04/2022</td>
+                            <td>$40</td>
+                            <td>Food</td>
+                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
+                        </tr>
+                        <tr>
+                            <td>Burger King</td>
+                            <td>01/04/2022</td>
+                            <td>$40</td>
+                            <td>Food</td>
+                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
+                        </tr>
+                        <tr>
+                            <td>Burger King</td>
+                            <td>01/04/2022</td>
+                            <td>$40</td>
+                            <td>Food</td>
+                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
                         </tr>
                     </tbody>
                 </table>

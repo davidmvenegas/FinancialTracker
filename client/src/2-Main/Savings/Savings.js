@@ -6,7 +6,7 @@ function Savings() {
         <div className='savings-container'>
             <div className="savings-header">
                 <div className="savings-header-box1">
-                    <h1 className='main-section-title'>Saving Goals</h1>
+                    <h1 className='main-section-title'>My Saving Goals</h1>
                     <p className='main-section-description'>Save for the Future</p>
                 </div>
                 <div className="savings-header-box2">
@@ -19,16 +19,18 @@ function Savings() {
                 </div>
             </div>
             <div className="savings-form-container">
+                <form className='income-search-form'>
+                    <input className='income-search-box' type="text" placeholder='Search' />
+                </form>
                 <form className="savings-form">
-                    <input type="text" placeholder='Title...'/>
-                    <input type="textarea" placeholder='Notes...' />
+                    <input id='first-saving-form' type="text" placeholder='Title...'/>
                     <input type="number" placeholder='Amount...' />
-                    <input type="date"/>
+                    <input id='last-saving-form' type="date"/>
                     <button type="submit">Create Goal</button>
                 </form>
             </div>
             <div className="savings-body">
-                <div className="savings-card">
+                <div tabindex="0" className="savings-card">
                     <div className="savings-card-wrapper">
                         <h1 className="savings-card-title">SAVING_TITLE</h1>
                         <form className="add-to-savings-form">
@@ -41,7 +43,7 @@ function Savings() {
                         </div>
                         <div className="savings-card-percent-box">
                             <h2>Completion:</h2>
-                            <h4>%55</h4> 
+                            <h4>55%</h4> 
                         </div>
                     </div>
                 </div>

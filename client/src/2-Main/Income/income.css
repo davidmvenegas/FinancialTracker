@@ -32,7 +32,7 @@
 .income-form-container {
     width: 70%;
     border-radius: .5rem;
-    margin: .75rem 0 .75rem;
+    margin: .5rem 0 .75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,21 +45,21 @@
 }
 .income-search-form {
     border: none;
-    width: 29%;
+    width: 23.5%;
 }
 .income-search-box {
-    height: 4.5rem;
+    height: 4.25rem;
     width: 100%;
-    color: #777;
-    background-color: #ccc;
+    color: #222;
+    background-color: rgb(226, 226, 226);
     border: none;
     border-radius: .5rem;
     padding-left: 1.35rem;
-    font-size: 1.7rem;
+    font-size: 1.65rem;
     outline: none;
 }
 .income-search-box:focus {
-    background-color: #c5c5c5;
+    background-color: #d0d0d0;
 }
 .income-search-box::placeholder {
     color: #777;
@@ -68,45 +68,48 @@
     border: none;
     display: flex;
     align-items: center;
-    width: 70%;
+    width: 75%;
     justify-content: space-between;
-    background-color: #999;
+    background-color: whitesmoke;
     border-radius: .5rem;
 }
 .income-form-header {
     font-size: 1.65rem;
     font-weight: 500;
-    width: 21.75%;
-    height: 4.5rem;
-    color: white;
-    background-color: #999;
-    padding-left: 1.7rem;
+    width: 20%;
+    height: 3.75rem;
+    margin: 1rem 0;
+    color: black;
+    background-color: whitesmoke;
+    padding-left: .5rem;
     border: none;
-    border-right: 1px solid #888;
+    border-bottom: 1px solid #888;
+    border-radius: 0;
 }
 #first-income-form {
-    border-radius: .5rem 0 0 .5rem;
+    margin-left: 1rem;
+    padding-left: .5rem;
 }
 #last-income-form {
     border-right: none;
 }
 .income-form-header::placeholder {
-    color: white;
+    color: black;
 }
 .income-form-select {
-    padding-left: 1rem;
+    padding-left: .5rem;
     cursor: pointer;
 }
 .income-submit-button {
-    width: 11.5%;
-    height: 4.5rem;
     color: white;
-    background-color: #333;
-    font-size: 1.65rem;
+    background-color: #777;
+    font-size: 1.5rem;
     font-weight: 600;
+    margin-right: 1rem;
     border: none;
     outline: none;
-    border-radius: 0 .5rem .5rem 0;
+    padding: 1rem 1.65rem;
+    border-radius: .5rem;
     cursor: pointer;
 }
 .income-submit-button:hover {
@@ -133,6 +136,7 @@
     background-color: #009879;
     color: white;
     text-align: left;
+    position: relative;
 }
 .income-body table thead,
 .income-body table tbody tr {
@@ -140,13 +144,29 @@
     width: 100%;
     table-layout: fixed;
 }
-.income-body table th,
-.income-body table td {
+.income-body table th {
     padding: 1.4rem 1.6rem;
+}
+.income-body table td {
+    padding: .85rem 1.6rem;
 }
 .income-body table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
 .income-body table tbody tr:nth-of-type(2n+0) {
     background-color: #e6e6e6;
+}
+#delete-income-item {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: -5rem;
+    padding: 0;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+#delete-income-item:hover {
+    transform: scale(1.1);
+}
+#delete-income-item:active {
+    transform: scale(.9);
 }
