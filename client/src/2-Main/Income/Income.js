@@ -124,7 +124,6 @@ function Income() {
                             <option value="housing">Housing</option>
                             <option value="transportation">Transportation</option>
                             <option value="personal_care">Personal Care</option>
-                            <option value="education">Education</option>
                             <option value="entertainment">Entertainment</option>
                             <option value="other">Other</option>
                         </select>

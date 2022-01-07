@@ -17,7 +17,12 @@ ActiveRecord::Schema.define(version: 2022_01_04_022812) do
 
   create_table "budget_items", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "category"
+    t.integer "food"
+    t.integer "housing"
+    t.integer "transportation"
+    t.integer "personal_care"
+    t.integer "entertainment"
+    t.integer "other"
     t.float "total_budget"
     t.float "current_total"
     t.datetime "created_at", precision: 6, null: false
@@ -39,7 +44,6 @@ ActiveRecord::Schema.define(version: 2022_01_04_022812) do
   create_table "savings_items", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.text "note"
     t.integer "target_amount"
     t.float "current_amount"
     t.datetime "created_at", precision: 6, null: false
