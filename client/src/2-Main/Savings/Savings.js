@@ -38,9 +38,9 @@ function Savings() {
         const response = await axios.get(`/savings_items`, { withCredentials: true })
         setSavingData(response.data)
     }
-
+    
     const handleSearch = (e) => setSearch(e.target.value)
-
+    
     const filteredItems = savingData.filter((item) => {
         return item.name.toLowerCase().includes(search.toLowerCase())
     })
@@ -80,7 +80,7 @@ function Savings() {
             </div>
             <div className="savings-body">
                 {filteredItems.map(item => {
-                    return <SavingsItem key={item.id} data={item.data} />
+                    return <SavingsItem key={item.id} data={item} />
                 })}
             </div>
         </div>

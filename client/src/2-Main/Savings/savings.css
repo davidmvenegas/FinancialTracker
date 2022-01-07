@@ -106,7 +106,7 @@
     margin: 1rem 0 4rem;
     min-width: 71%;
     max-height: 45rem;
-    overflow-y: scroll;
+    overflow-y: auto;
     white-space: nowrap;
     display: grid;
     justify-content: space-evenly;
