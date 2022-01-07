@@ -18,10 +18,12 @@ function Header() {
     return (
         <div>
             <div className="header-container">
-                <div className="header-box1">
-                    <img src={Logo} alt="Logo" />
-                    <h2>The Financial Tracker <span>&reg;</span></h2>
-                </div>
+                <Link to='/main' className='nav-back'>
+                    <div className="header-box1">
+                        <img src={Logo} alt="Logo" />
+                        <h2>The Financial Tracker <span>&reg;</span></h2>
+                    </div>
+                </Link>
                 <div className="header-box2">
                     <Link to='/profile'><img className='header-profile' src={UserIcon} alt="Profile" /></Link>
                     <button className='header-logout' onClick={() => handleLogoutClick()}>LOG OUT</button>

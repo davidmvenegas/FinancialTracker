@@ -1,8 +1,16 @@
 .profile-go-back {
     position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    font-size: 1.5rem;
+    top: 2.5rem;
+    left: 2.5rem;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: white;
+    background-color: #888;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+.profile-go-back:hover {
+    background-color: #777;
 }
 .profile-container {
     position: relative;
@@ -12,7 +20,7 @@
     justify-content: center;
 }
 .profile-wrapper {
-    width: 55vw;
+    width: 70%;
     height: auto;
     background: whitesmoke;
     padding: 2.75rem 7.5rem;
@@ -29,7 +37,7 @@
     font-size: 4.25rem;
     font-weight: 400;
     color: #333333;
-    line-height: 1.2;
+    line-height: 1.4;
     text-align: center;
     padding-bottom: 3.75rem;
 }
@@ -40,7 +48,7 @@
     margin-bottom: 3.5rem;
 }
 .profile-input-label {
-    font-size: 1.8rem;
+    font-size: 1.65rem;
     font-weight: 600;
     color: #999999;
     line-height: 1.2;
@@ -49,7 +57,7 @@
 .profile-input {
     display: block;
     width: 100%;
-    height: 3.75rem;
+    height: 4.5rem;
     background: transparent;
     font-size: 1.75rem;
     color: #555555;
@@ -91,7 +99,7 @@
     width: 0;
     height: 2px;
     transition: all .4s ease;
-    background-color: limegreen;
+    background-color: #009879;
 }
 .profile-input:focus + .profile-input-focus::before {
     width: 100%;

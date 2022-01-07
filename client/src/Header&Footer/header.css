@@ -6,6 +6,9 @@
     height: 7.5rem;
     background-color: #393a3d;
 }
+.nav-back {
+    text-decoration: none;
+}
 .header-box1 {
     display: flex;
     align-items: center;

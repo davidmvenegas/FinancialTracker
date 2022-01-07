@@ -38,6 +38,11 @@ function Savings() {
                 <SavingsItem/>
                 <SavingsItem/>
                 <SavingsItem/>
+                <SavingsItem/>
+                <SavingsItem/>
+                <SavingsItem/>
+                <SavingsItem/>
+                <SavingsItem/>
             </div>
         </div>
     )

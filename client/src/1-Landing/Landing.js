@@ -2,6 +2,7 @@ import './landing.css'
 import { React, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useFinanceContext } from '../FinanceContext'
+import Logo from '../images/logo.png'
 import axios from 'axios'
 
 function Landing() {
@@ -84,6 +85,13 @@ function Landing() {
             <p>Status: {loggedInStatus}</p>
             <Link to='/main'>Go to Main</Link>
             <div className="login-page">
+                <div className="login-logo-box">
+                    <div className="login-content-box">
+                        <img src={Logo} alt="Logo" />
+                        <h2>The Financial Tracker <span>&reg;</span></h2>
+                    </div>
+                    <p>Monitor your spending - Understand your finances - Prepare for your future.</p>
+                </div>
                 <div className="box">
                     <div className="left">
                         <h3>Create Account</h3>
