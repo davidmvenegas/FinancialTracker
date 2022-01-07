@@ -74,7 +74,7 @@
     border-radius: .5rem;
 }
 .income-form-header {
-    font-size: 1.65rem;
+    font-size: 1.75rem;
     font-weight: 500;
     width: 20%;
     height: 3.75rem;
@@ -86,15 +86,11 @@
     border-bottom: 1px solid #888;
     border-radius: 0;
 }
-#first-income-form {
-    margin-left: 1rem;
-    padding-left: .5rem;
-}
-#last-income-form {
-    border-right: none;
-}
 .income-form-header::placeholder {
     color: black;
+}
+.income-form-header:disabled::placeholder {
+    color: #bbb;
 }
 .income-form-select {
     padding-left: .5rem;

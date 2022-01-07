@@ -1,5 +1,6 @@
 import './savings.css'
 import React from 'react'
+import SavingsItem from './SavingsItem'
 
 function Savings() {
     return (
@@ -25,28 +26,18 @@ function Savings() {
                 <form className="savings-form">
                     <input id='first-saving-form' type="text" placeholder='Title...'/>
                     <input type="number" placeholder='Amount...' />
-                    <input id='last-saving-form' type="date"/>
+                    <input className='input-type-date' id='last-saving-form' type="date"/>
                     <button type="submit">Create Goal</button>
                 </form>
             </div>
             <div className="savings-body">
-                <div tabindex="0" className="savings-card">
-                    <div className="savings-card-wrapper">
-                        <h1 className="savings-card-title">SAVING_TITLE</h1>
-                        <form className="add-to-savings-form">
-                            <input type="number"  placeholder='$' required/>
-                            <button type="submit">Add</button>
-                        </form>
-                        <div className="savings-card-date-box">
-                            <h2>Target Date:</h2>
-                            <h4>05/01/2022</h4>
-                        </div>
-                        <div className="savings-card-percent-box">
-                            <h2>Completion:</h2>
-                            <h4>55%</h4> 
-                        </div>
-                    </div>
-                </div>
+                <SavingsItem/>
+                <SavingsItem/>
+                <SavingsItem/>
+                <SavingsItem/>
+                <SavingsItem/>
+                <SavingsItem/>
+                <SavingsItem/>
             </div>
         </div>
     )

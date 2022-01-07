@@ -1,8 +1,70 @@
 import './income.css'
-import React from 'react'
-import Delete from '../../images/red_x_icon.png'
+import { React, useEffect, useState } from 'react'
+import { useFinanceContext } from '../../FinanceContext'
+import axios from 'axios'
+import IncomeItem from './IncomeItem'
 
 function Income() {
+    const { user, updateIncome } = useFinanceContext()
+    const [description, setDescription] = useState("")
+    const [amount, setAmount] = useState("")
+    const [category, setCategory] = useState("")
+    const [type, setType] = useState("")
+    const [incomeItemData, setIncomeItemData] = useState([])
+
+    let today = new Date()
+    let mm = today.getMonth()+1
+    let dd = today.getDate()
+    let yyyy = today.getFullYear()
+    let todaysDate = (`${mm}/${dd}/${yyyy}`)
+
+    const typeEl = document.getElementById('typeID')
+    const descriptionEl = document.getElementById('descriptionID')
+    const categoryEl = document.getElementById('categoryID')
+
+    const handleDescriptionChange = (e) => setDescription(e.target.value)
+    const handleAmountChange = (e) =>  setAmount((type === 'income') ? Math.abs(e.target.value) : -Math.abs(e.target.value))
+    const handleCategoryChange = (e) => setCategory(e.target.value)
+    const handleTypeChange = (e) => {
+        setDescription('')
+        setAmount('')
+        setCategory('')
+        setType(e.target.value)
+        descriptionEl.disabled = false
+    }
+
+    function clearForm() {
+        setDescription('')
+        setAmount('')
+        setCategory('')
+        typeEl.selectedIndex = 0
+        categoryEl.selectedIndex = 0
+        descriptionEl.disabled = true
+    }
+
+    async function handleAddIncomeItem(e) {
+        e.preventDefault()
+        clearForm()
+        await axios.post('/income_item', {
+            income_item: {
+                user_id: user.user.id,
+                name: description,
+                amount: amount,
+                category: category,
+                date: todaysDate,
+            }
+        }, { withCredentials: true })
+        .catch(err => console.error(err))
+        const response = await axios.get(`/income_items`, { withCredentials: true })
+        setIncomeItemData(response.data)
+    }
+
+    useEffect(() => {
+        axios.get(`/income_items`, { withCredentials: true })
+        .then(res => setIncomeItemData(res.data))
+        .catch(err => console.error(err))
+    }, [updateIncome])
+
     return (
         <div className='income-container'>
             <div className="income-header">
@@ -28,16 +90,16 @@ function Income() {
                     <form className='income-search-form'>
                         <input className='income-search-box' type="text" placeholder='Search' />
                     </form>
-                    <form className="income-form">
-                        <input id='first-income-form' className='income-form-header' type="text" placeholder='Description...' />
-                        <input className='income-form-header' type="number" placeholder='Amount...' />
-                        <select className='income-form-header income-form-select'>
+                    <form onSubmit={handleAddIncomeItem} className="income-form">
+                        <select id='typeID' onChange={handleTypeChange} className='income-form-header income-form-select' required >
                             <option disabled selected hidden>Type...</option>
                             <option value="income">Income</option>
                             <option value="expense">Expense</option>
                         </select>
-                        <select id='last-income-form' className="income-form-header income-form-select">
-                            <option disabled selected hidden>Category...</option>
+                        <input id='descriptionID' onChange={handleDescriptionChange} className='income-form-header' value={description} type="text" placeholder='Description...' disabled={type === ''} required />
+                        <input id='amountID' onChange={handleAmountChange} className='income-form-header' value={amount} type="number" placeholder='Amount...' disabled={description === ''} required />
+                        <select id='categoryID' onChange={handleCategoryChange} className="income-form-header income-form-select" disabled={(type === 'income') || (amount === '')} required={type === 'expense'} >
+                            <option disabled selected hidden >Category...</option>
                             <option value="food">Food</option>
                             <option value="housing">Housing</option>
                             <option value="transportation">Transportation</option>
@@ -46,7 +108,7 @@ function Income() {
                             <option value="entertainment">Entertainment</option>
                             <option value="other">Other</option>
                         </select>
-                        <button className='income-submit-button' type="submit">ADD</button>
+                        <button className='income-submit-button' type="submit" style={type === "" ? {pointerEvents: "none"} : {pointerEvents: "all"}}>ADD</button>
                     </form>
                 </div>
             </div>
@@ -63,69 +125,9 @@ function Income() {
                         </tr>
                     </thead>
                     <tbody className='income-table-body'>
-                        <tr>
-                            <td>Burger King</td>
-                            <td>01/04/2022</td>
-                            <td>$40</td>
-                            <td>Food</td>
-                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
-                        </tr>
-                        <tr>
-                            <td>Burger King</td>
-                            <td>01/04/2022</td>
-                            <td>$40</td>
-                            <td>Food</td>
-                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
-                        </tr>
-                        <tr>
-                            <td>Burger King</td>
-                            <td>01/04/2022</td>
-                            <td>$40</td>
-                            <td>Food</td>
-                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
-                        </tr>
-                        <tr>
-                            <td>Burger King</td>
-                            <td>01/04/2022</td>
-                            <td>$40</td>
-                            <td>Food</td>
-                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
-                        </tr>
-                        <tr>
-                            <td>Burger King</td>
-                            <td>01/04/2022</td>
-                            <td>$40</td>
-                            <td>Food</td>
-                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
-                        </tr>
-                        <tr>
-                            <td>Burger King</td>
-                            <td>01/04/2022</td>
-                            <td>$40</td>
-                            <td>Food</td>
-                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
-                        </tr>
-                        <tr>
-                            <td>Burger King</td>
-                            <td>01/04/2022</td>
-                            <td>$40</td>
-                            <td>Food</td>
-                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
-                        </tr>
-                        <tr>
-                            <td>Burger King</td>
-                            <td>01/04/2022</td>
-                            <td>$40</td>
-                            <td>Food</td>
-                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
-                        </tr>
-                        <tr>
-                            <td>Burger King</td>
-                            <td>01/04/2022</td>
-                            <td>$40</td>
-                            <td>Food</td>
-                            <td style={{width: '2.5%'}}><img id='delete-income-item' src={Delete} alt='Delete'/></td>
-                        </tr>
+                        {incomeItemData.map(data => {
+                            return <IncomeItem key={data.id} data={data} /> 
+                        })}
                     </tbody>
                 </table>
             </div>

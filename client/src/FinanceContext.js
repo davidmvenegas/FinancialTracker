@@ -9,6 +9,8 @@ export const FinanceContextProvider = ({ children }) => {
     const navigate = useNavigate()
     const [user, setUser] = useState({})
     const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN")
+    const [updateIncome, setUpdateIncome] = useState()
+
 
     useEffect(() => {
         axios.get('/logged_in', { withCredentials: true })
@@ -40,6 +42,8 @@ export const FinanceContextProvider = ({ children }) => {
         loggedInStatus,
         handleSuccesfulAuth, 
         handleLogout,
+        updateIncome,
+        setUpdateIncome,
     }
 
     return (

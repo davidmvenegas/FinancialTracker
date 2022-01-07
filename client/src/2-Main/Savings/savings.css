@@ -188,3 +188,6 @@
     font-size: 2rem;
     font-weight: 300;
 }
+.input-type-date {
+    cursor: text;
+}
