@@ -46,6 +46,6 @@ class SavingsItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def savings_item_params
-      params.require(:savings_item).permit(:user_id, :name, :note, :target_amount, :current_amount)
+      params.require(:savings_item).permit(:user_id, :name, :target_amount, :current_amount, :target_date)
     end
 end

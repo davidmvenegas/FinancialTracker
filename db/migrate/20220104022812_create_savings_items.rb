@@ -5,6 +5,7 @@ class CreateSavingsItems < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :target_amount
       t.float :current_amount
+      t.date :target_date
 
       t.timestamps
     end

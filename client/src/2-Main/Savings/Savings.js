@@ -1,8 +1,56 @@
 import './savings.css'
-import React from 'react'
+import { React, useEffect, useState } from 'react'
+import { useFinanceContext } from '../../FinanceContext'
+import axios from 'axios'
 import SavingsItem from './SavingsItem'
 
 function Savings() {
+    const { user } = useFinanceContext()
+    const [title, setTitle] = useState("")
+    const [amount, setAmount] = useState("")
+    const [date, setDate] = useState("")
+    const [savingData, setSavingData] = useState([])
+    const [search, setSearch] = useState("")
+
+    const handleTitleChange = (e) => setTitle(e.target.value)
+    const handleAmountChange = (e) => setAmount(e.target.value)
+    const handleDateChange = (e) => setDate(e.target.value)
+
+    function clearForm() {
+        setTitle('')
+        setAmount(0)
+        setDate('')
+    }
+
+    async function handleAddSaving(e) {
+        e.preventDefault()
+        clearForm()
+        await axios.post('/savings_items', {
+            savings_item: {
+                user_id: user.user.id,
+                name: title,
+                target_amount: amount,
+                current_amount: 0,
+                target_date: date,
+            }
+        }, { withCredentials: true })
+        .catch(err => console.error(err))
+        const response = await axios.get(`/savings_items`, { withCredentials: true })
+        setSavingData(response.data)
+    }
+
+    const handleSearch = (e) => setSearch(e.target.value)
+
+    const filteredItems = savingData.filter((item) => {
+        return item.name.toLowerCase().includes(search.toLowerCase())
+    })
+
+    useEffect(() => {
+        axios.get(`/savings_items`, { withCredentials: true })
+        .then(res => setSavingData(res.data))
+        .catch(err => console.error(err))
+    }, [])
+
     return (
         <div className='savings-container'>
             <div className="savings-header">
@@ -21,28 +69,19 @@ function Savings() {
             </div>
             <div className="savings-form-container">
                 <form className='income-search-form'>
-                    <input className='income-search-box' type="text" placeholder='Search' />
+                    <input onChange={handleSearch} className='income-search-box' type="text" placeholder='Search' />
                 </form>
-                <form className="savings-form">
-                    <input id='first-saving-form' type="text" placeholder='Title...'/>
-                    <input type="number" placeholder='Amount...' />
-                    <input className='input-type-date' id='last-saving-form' type="date"/>
+                <form onSubmit={handleAddSaving} className="savings-form">
+                    <input onChange={handleTitleChange} value={title} id='first-saving-form' type="text" placeholder='Title...'/>
+                    <input onChange={handleAmountChange} value={amount} type="number" placeholder='Amount...' />
+                    <input onChange={handleDateChange} value={date} className='input-type-date' id='last-saving-form' type="date"/>
                     <button type="submit">Create Goal</button>
                 </form>
             </div>
             <div className="savings-body">
-                <SavingsItem/>
-                <SavingsItem/>
-                <SavingsItem/>
-                <SavingsItem/>
-                <SavingsItem/>
-                <SavingsItem/>
-                <SavingsItem/>
-                <SavingsItem/>
-                <SavingsItem/>
-                <SavingsItem/>
-                <SavingsItem/>
-                <SavingsItem/>
+                {filteredItems.map(item => {
+                    return <SavingsItem key={item.id} data={item.data} />
+                })}
             </div>
         </div>
     )

@@ -90,32 +90,32 @@ function Budget() {
                         <tr>
                             <td>Food</td>
                             <td>$0</td>
-                            <td>$<input onChange={foodChange} onBlur={addFood} className='budget-editable' type="number" placeholder='Edit...' /></td>
+                            <td>$<input onChange={foodChange} onBlur={addFood} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Housing</td>
                             <td>$0</td>
-                            <td>$<input onChange={housingChange} onBlur={addHousing} className='budget-editable' type="number" placeholder='Edit...' /></td>
+                            <td>$<input onChange={housingChange} onBlur={addHousing} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Transportation</td>
                             <td>$0</td>
-                            <td>$<input onChange={transportationChange} onBlur={addTransportation} className='budget-editable' type="number" placeholder='Edit...' /></td>
+                            <td>$<input onChange={transportationChange} onBlur={addTransportation} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Personal Care</td>
                             <td>$0</td>
-                            <td>$<input onChange={personalCareChange} onBlur={addPersonalCare} className='budget-editable' type="number" placeholder='Edit...' /></td>
+                            <td>$<input onChange={personalCareChange} onBlur={addPersonalCare} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Entertainment</td>
                             <td>$0</td>
-                            <td>$<input onChange={entertainmentChange} onBlur={addEntertainment} className='budget-editable' type="number" placeholder='Edit...' /></td>
+                            <td>$<input onChange={entertainmentChange} onBlur={addEntertainment} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Other</td>
                             <td>$0</td>
-                            <td>$<input onChange={otherChange} onBlur={addOther} className='budget-editable' type="number" placeholder='Edit...' /></td>
+                            <td>$<input onChange={otherChange} onBlur={addOther} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                     </tbody>
                 </table>

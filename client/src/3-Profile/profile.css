@@ -20,7 +20,7 @@
     justify-content: center;
 }
 .profile-wrapper {
-    width: 70%;
+    width: 65%;
     height: auto;
     background: whitesmoke;
     padding: 2.75rem 7.5rem;
@@ -29,7 +29,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 3.5rem;
+    column-gap: 5rem;
 }
 .profile-title {
     display: block;
@@ -50,7 +50,7 @@
 .profile-input-label {
     font-size: 1.65rem;
     font-weight: 600;
-    color: #999999;
+    color: #777;
     line-height: 1.2;
     padding-left: .2rem;
 }

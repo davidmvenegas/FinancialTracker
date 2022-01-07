@@ -1,6 +1,6 @@
 import './header.css'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useFinanceContext } from '../FinanceContext'
 import axios from 'axios'
 import Logo from '../images/logo.png'
@@ -8,11 +8,13 @@ import UserIcon from '../images/profile_icon.png'
 
 function Header() {
     const { handleLogout } = useFinanceContext()
+    const navigate = useNavigate()
 
     function handleLogoutClick() {
         axios.delete('/logout', { withCredentials: true })
         .then(() => handleLogout())
         .catch(err => console.error(err))
+        navigate('/')
     }
 
     return (

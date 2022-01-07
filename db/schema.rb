@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2022_01_04_022812) do
     t.integer "housing"
     t.integer "transportation"
     t.integer "personal_care"
-    t.integer "entertainment"
     t.integer "other"
     t.float "total_budget"
     t.float "current_total"
@@ -46,6 +45,7 @@ ActiveRecord::Schema.define(version: 2022_01_04_022812) do
     t.string "name"
     t.integer "target_amount"
     t.float "current_amount"
+    t.date "target_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_savings_items_on_user_id"
