@@ -5,7 +5,7 @@ class CreateSavingsItems < ActiveRecord::Migration[6.1]
       t.string :name
       t.text :note
       t.integer :target_amount
-      t.integer :current_amount
+      t.float :current_amount
 
       t.timestamps
     end

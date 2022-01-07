@@ -56,7 +56,11 @@ function Landing() {
             user: {
                 email: regEmail,
                 password: regPassword,
-                passwordConfirmation: passwordConfirmation
+                passwordConfirmation: passwordConfirmation,
+                total_expenses: 0,
+                total_income: 0,
+                balance: 0,
+                monthly_budget: 0
             }
         }, { withCredentials: true })
         .then(res => handleSuccesfulAuth(res.data))

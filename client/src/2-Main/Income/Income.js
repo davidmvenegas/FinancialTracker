@@ -7,10 +7,13 @@ import IncomeItem from './IncomeItem'
 function Income() {
     const { user, updateIncome } = useFinanceContext()
     const [description, setDescription] = useState("")
-    const [amount, setAmount] = useState("")
+    const [amount, setAmount] = useState(0)
     const [category, setCategory] = useState("")
     const [type, setType] = useState("")
     const [incomeItemData, setIncomeItemData] = useState([])
+    const [search, setSearch] = useState("")
+    // const [userIncome, setUserIncome] = useState(0)
+    // const [userExpenses, setUserExpenses] = useState(0)
 
     let today = new Date()
     let mm = today.getMonth()+1
@@ -23,7 +26,11 @@ function Income() {
     const categoryEl = document.getElementById('categoryID')
 
     const handleDescriptionChange = (e) => setDescription(e.target.value)
-    const handleAmountChange = (e) =>  setAmount((type === 'income') ? Math.abs(e.target.value) : -Math.abs(e.target.value))
+    const handleAmountChange = (e) => {
+        setAmount((type === 'income') ? Math.abs(e.target.value) : -Math.abs(e.target.value))
+        // setUserIncome((type === 'income') ? Math.abs(e.target.value) : 0)
+        // setUserExpenses((type === 'expense') ? Math.abs(e.target.value) : 0)
+    }
     const handleCategoryChange = (e) => setCategory(e.target.value)
     const handleTypeChange = (e) => {
         setDescription('')
@@ -45,7 +52,7 @@ function Income() {
     async function handleAddIncomeItem(e) {
         e.preventDefault()
         clearForm()
-        await axios.post('/income_item', {
+        await axios.post('/income_items', {
             income_item: {
                 user_id: user.user.id,
                 name: description,
@@ -54,10 +61,23 @@ function Income() {
                 date: todaysDate,
             }
         }, { withCredentials: true })
+        // await axios.patch(`/users/${user.user.id}`, {
+        //     user: {
+        //         total_income: userIncome,
+        //         total_expenses: userExpenses,
+        //         balance: (userIncome - userExpenses)
+        //     }
+        // }, { withCredentials: true })
         .catch(err => console.error(err))
         const response = await axios.get(`/income_items`, { withCredentials: true })
         setIncomeItemData(response.data)
     }
+
+    const handleSearch = (e) => setSearch(e.target.value)
+
+    const filteredItems = incomeItemData.filter((item) => {
+        return item.name.toLowerCase().includes(search.toLowerCase())
+    })
 
     useEffect(() => {
         axios.get(`/income_items`, { withCredentials: true })
@@ -74,21 +94,21 @@ function Income() {
                 </div>
                 <div className="income-header-box2">
                     <h2 className='income-category-title'>Income</h2>
-                    <div className="income-category-amount"><h2><span>$</span> 12,000</h2></div>
+                    <div className="income-category-amount"><h2><span>$</span> 0</h2></div>
                 </div>
                 <div className="income-header-box3">
                     <h2 className='income-category-title'>Expenses</h2>
-                    <div className="income-category-amount"><h2><span>$</span> 2,000</h2></div>
+                    <div className="income-category-amount"><h2><span>$</span> 0</h2></div>
                 </div>
                 <div className="income-header-box4">
                     <h2 className='income-category-title'>Total Balance</h2>
-                    <div className="income-category-amount"><h2><span>$</span> 10,000</h2></div>
+                    <div className="income-category-amount"><h2><span>$</span> 0</h2></div>
                 </div>
             </div>
             <div className="income-form-container">
                 <div className="income-box">
                     <form className='income-search-form'>
-                        <input className='income-search-box' type="text" placeholder='Search' />
+                        <input onChange={handleSearch} className='income-search-box' type="text" placeholder='Search' />
                     </form>
                     <form onSubmit={handleAddIncomeItem} className="income-form">
                         <select id='typeID' onChange={handleTypeChange} className='income-form-header income-form-select' required >
@@ -121,11 +141,10 @@ function Income() {
                             <th>Amount</th>
                             <th>Category</th>
                             <th style={{width: '2.5%'}}></th>
-                            <th style={{width: '2.5%'}}></th>
                         </tr>
                     </thead>
                     <tbody className='income-table-body'>
-                        {incomeItemData.map(data => {
+                        {filteredItems.map(data => {
                             return <IncomeItem key={data.id} data={data} /> 
                         })}
                     </tbody>

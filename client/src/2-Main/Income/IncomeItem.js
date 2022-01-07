@@ -9,7 +9,35 @@ function IncomeItem({data}) {
     let correctName = data.name
     let correctDate = data.date
     let correctAmount = data.amount
-    let correctCategory = data.category === "" ? "Income" : data.category
+    let correctCategory;
+            switch (data.category) {
+                case "food":
+                    correctCategory = 'Food';
+                    break;
+                case "housing":
+                    correctCategory = 'Housing';
+                    break;
+                case "transportation":
+                    correctCategory = 'Transportation';
+                    break;
+                case "personal_care":
+                    correctCategory = 'Personal Care';
+                    break;
+                case "education":
+                    correctCategory = 'Education';
+                    break;
+                case "entertainment":
+                    correctCategory = 'Entertainment';
+                    break;
+                case "other":
+                    correctCategory = 'Other';
+                    break;
+                case "":
+                    correctCategory = 'Income';
+                    break;
+                default:
+                    correctCategory = "Income"
+            }
 
     async function handleDeleteIncome() {
         await axios.delete(`/income_items/${data.id}`, { withCredentials: true })
