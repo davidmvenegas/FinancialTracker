@@ -116,6 +116,7 @@
     row-gap: 1rem;
 }
 .savings-card {
+    position: relative;
     height: 20rem;
     width: 25rem;
     border: 1px solid #888;
@@ -136,6 +137,11 @@
     font-weight: 600;
     text-align: center;
     margin: 1.5rem 0;
+    max-width: 21rem;
+    overflow-x: auto;
+}
+.savings-card-title::-webkit-scrollbar {
+    display: none;
 }
 .add-to-savings-form input {
     border: 1px solid #555;
@@ -192,4 +198,19 @@
 }
 .input-type-date {
     cursor: text;
+}
+.delete-savings-item {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    top: .75rem;
+    right: 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: all .15s ease;
+}
+.delete-savings-item:hover {
+    transform: scale(1.085);
+}
+.delete-savings-item:active {
+    transform: scale(.9);
 }

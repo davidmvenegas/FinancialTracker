@@ -10,6 +10,7 @@ export const FinanceContextProvider = ({ children }) => {
     const [user, setUser] = useState({})
     const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN")
     const [updateIncome, setUpdateIncome] = useState()
+    const [updateSavings, setUpdateSavings] = useState()
 
 
     useEffect(() => {
@@ -44,6 +45,8 @@ export const FinanceContextProvider = ({ children }) => {
         handleLogout,
         updateIncome,
         setUpdateIncome,
+        updateSavings,
+        setUpdateSavings
     }
 
     return (

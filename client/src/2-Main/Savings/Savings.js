@@ -5,7 +5,7 @@ import axios from 'axios'
 import SavingsItem from './SavingsItem'
 
 function Savings() {
-    const { user } = useFinanceContext()
+    const { user, updateSavings } = useFinanceContext()
     const [title, setTitle] = useState("")
     const [amount, setAmount] = useState("")
     const [date, setDate] = useState("")
@@ -49,7 +49,7 @@ function Savings() {
         axios.get(`/savings_items`, { withCredentials: true })
         .then(res => setSavingData(res.data))
         .catch(err => console.error(err))
-    }, [])
+    }, [updateSavings])
 
     return (
         <div className='savings-container'>

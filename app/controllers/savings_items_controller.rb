@@ -4,8 +4,8 @@ class SavingsItemsController < ApplicationController
   # GET /savings_items
   def index
     @savings_items = SavingsItem.all
-
-    render json: @savings_items
+    @new_items = @savings_items.sort_by { |hash| hash['key'] }.reverse
+    render json: @new_items
   end
 
   # GET /savings_items/1

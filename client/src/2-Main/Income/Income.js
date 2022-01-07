@@ -12,8 +12,8 @@ function Income() {
     const [type, setType] = useState("")
     const [incomeItemData, setIncomeItemData] = useState([])
     const [search, setSearch] = useState("")
-    // const [userIncome, setUserIncome] = useState(0)
-    // const [userExpenses, setUserExpenses] = useState(0)
+    const [userIncome, setUserIncome] = useState(0)
+    const [userExpenses, setUserExpenses] = useState(0)
 
     let today = new Date()
     let mm = today.getMonth()+1
@@ -28,8 +28,8 @@ function Income() {
     const handleDescriptionChange = (e) => setDescription(e.target.value)
     const handleAmountChange = (e) => {
         setAmount((type === 'income') ? Math.abs(e.target.value) : -Math.abs(e.target.value))
-        // setUserIncome((type === 'income') ? Math.abs(e.target.value) : 0)
-        // setUserExpenses((type === 'expense') ? Math.abs(e.target.value) : 0)
+        setUserIncome((type === 'income') ? Math.abs(e.target.value) : 0)
+        setUserExpenses((type === 'expense') ? Math.abs(e.target.value) : 0)
     }
     const handleCategoryChange = (e) => setCategory(e.target.value)
     const handleTypeChange = (e) => {
@@ -61,13 +61,13 @@ function Income() {
                 date: todaysDate,
             }
         }, { withCredentials: true })
-        // await axios.patch(`/users/${user.user.id}`, {
-        //     user: {
-        //         total_income: userIncome,
-        //         total_expenses: userExpenses,
-        //         balance: (userIncome - userExpenses)
-        //     }
-        // }, { withCredentials: true })
+        await axios.patch(`/users/${user.user.id}`, {
+            user: {
+                total_income: userIncome,
+                total_expenses: userExpenses,
+                balance: (userIncome - userExpenses)
+            }
+        }, { withCredentials: true })
         .catch(err => console.error(err))
         const response = await axios.get(`/income_items`, { withCredentials: true })
         setIncomeItemData(response.data)
@@ -118,8 +118,8 @@ function Income() {
                         </select>
                         <input id='descriptionID' onChange={handleDescriptionChange} className='income-form-header' value={description} type="text" placeholder='Description...' disabled={type === ''} required />
                         <input id='amountID' onChange={handleAmountChange} className='income-form-header' value={amount} type="number" placeholder='Amount...' disabled={description === ''} required />
-                        <select id='categoryID' onChange={handleCategoryChange} className="income-form-header income-form-select" disabled={(type === 'income') || (amount === '')} required={type === 'expense'} >
-                            <option disabled selected hidden >Category...</option>
+                        <select id='categoryID' onChange={handleCategoryChange} className="income-form-header income-form-select" disabled={(type === 'income') || (amount === '')} required >
+                            <option value="" disabled selected hidden >Category...</option>
                             <option value="food">Food</option>
                             <option value="housing">Housing</option>
                             <option value="transportation">Transportation</option>
