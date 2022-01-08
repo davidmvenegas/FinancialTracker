@@ -11,10 +11,6 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :gender
       t.string :marital_status
       t.integer :annual_income
-      t.float :balance
-      t.float :total_expenses
-      t.float :total_income
-      t.integer :monthly_budget
 
       t.timestamps
     end

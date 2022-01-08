@@ -5,7 +5,7 @@ import axios from 'axios'
 import { PieChart } from 'react-minimal-pie-chart';
 
 function Budget() {
-    const { user, updateBudget } = useFinanceContext()
+    const { updateBudget } = useFinanceContext()
     const [food, setFood] = useState(0)
     const [housing, setHousing] = useState(0)
     const [transportation, setTransportation] = useState(0)
@@ -14,38 +14,6 @@ function Budget() {
     const [other, setOther] = useState(0)
     const [itemsData, setItemsData] = useState([])
 
-    const foodChange = (e) => setFood(e.target.value)
-    const housingChange = (e) => setHousing(e.target.value)
-    const transportationChange = (e) => setTransportation(e.target.value)
-    const personalCareChange = (e) => setPersonalCare(e.target.value)
-    const entertainmentChange = (e) => setEntertainment(e.target.value)
-    const otherChange = (e) => setOther(e.target.value)
-
-    async function addFood() {
-        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {food: food}}, { withCredentials: true })
-    }
-    async function addHousing() {
-        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {housing: housing}}, { withCredentials: true })
-    }
-    async function addTransportation() {
-        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {transportation: transportation}}, { withCredentials: true })
-    }
-    async function addPersonalCare() {
-        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {personal_care: personalCare}}, { withCredentials: true })
-    }
-    async function addEntertainment() {
-        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {entertainment: entertainment}}, { withCredentials: true })
-    }
-    async function addOther() {
-        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {other: other}}, { withCredentials: true })
-    }
-
-    useEffect(() => {
-        axios.get(`/income_items`, { withCredentials: true })
-        .then(res => setItemsData(res.data))
-        .catch(err => console.error(err))
-    }, [updateBudget])
-
     const foodSpent = Math.abs(itemsData.filter((item) => (item.category === 'food')).map(i => i.amount).reduce((a, b) => a + b, 0))
     const housingSpent = Math.abs(itemsData.filter((item) => (item.category === 'housing')).map(i => i.amount).reduce((a, b) => a + b, 0))
     const transportationSpent = Math.abs(itemsData.filter((item) => (item.category === 'transportation')).map(i => i.amount).reduce((a, b) => a + b, 0))
@@ -53,6 +21,42 @@ function Budget() {
     const entertainmentSpent = Math.abs(itemsData.filter((item) => (item.category === 'entertainment')).map(i => i.amount).reduce((a, b) => a + b, 0))
     const otherSpent = Math.abs(itemsData.filter((item) => (item.category === 'other')).map(i => i.amount).reduce((a, b) => a + b, 0))
     const totalSpent = (foodSpent + housingSpent + transportationSpent + personalCareSpent + entertainmentSpent + otherSpent)
+
+    const foodChange = (e) => setFood(e.target.value)
+    const housingChange = (e) => setHousing(e.target.value)
+    const transportationChange = (e) => setTransportation(e.target.value)
+    const personalCareChange = (e) => setPersonalCare(e.target.value)
+    const entertainmentChange = (e) => setEntertainment(e.target.value)
+    const otherChange = (e) => setOther(e.target.value)
+
+
+
+
+
+    // const addFood = () => axios.patch(`/budget_items/1`, {budget_item: {food: food}}, { withCredentials: true })
+    // const addHousing = () => axios.patch(`/budget_items/2`, {budget_item: {housing: housing}}, { withCredentials: true })
+    // const addTransportation = () => axios.patch(`/budget_items/3`, {budget_item: {transportation: transportation}}, { withCredentials: true })
+    // const addPersonalCare = () => axios.patch(`/budget_items/4`, {budget_item: {personal_care: personalCare}}, { withCredentials: true })
+    // const addEntertainment = () => axios.patch(`/budget_items/5`, {budget_item: {entertainment: entertainment}}, { withCredentials: true })
+    // const addOther = () => axios.patch(`/budget_items/6`, {budget_item: {other: other}}, { withCredentials: true })
+
+    const makeFood = () => axios.post(`/budget_items/1`, {budget_item: {food: food}}, { withCredentials: true })
+    const makeHousing = () => axios.post(`/budget_items/2`, {budget_item: {housing: housing}}, { withCredentials: true })
+    const makeTransportation = () => axios.post(`/budget_items/3`, {budget_item: {transportation: transportation}}, { withCredentials: true })
+    const makePersonalCare = () => axios.post(`/budget_items/4`, {budget_item: {personal_care: personalCare}}, { withCredentials: true })
+    const makeEntertainment = () => axios.post(`/budget_items/5`, {budget_item: {entertainment: entertainment}}, { withCredentials: true })
+    const makeOther = () => axios.post(`/budget_items/6`, {budget_item: {other: other}}, { withCredentials: true })
+
+
+
+
+
+
+    useEffect(() => {
+        axios.get(`/income_items`, { withCredentials: true })
+        .then(res => setItemsData(res.data))
+        .catch(err => console.error(err))
+    }, [updateBudget])
 
     return (
         <div className='budget-container'>
@@ -105,32 +109,32 @@ function Budget() {
                         <tr>
                             <td>Food</td>
                             <td>${foodSpent}</td>
-                            <td>$<input onChange={foodChange} onBlur={addFood} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td>$<input onChange={foodChange} onBlur={makeFood} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Housing</td>
                             <td>${housingSpent}</td>
-                            <td>$<input onChange={housingChange} onBlur={addHousing} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td>$<input onChange={housingChange} onBlur={makeHousing} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Transportation</td>
                             <td>${transportationSpent}</td>
-                            <td>$<input onChange={transportationChange} onBlur={addTransportation} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td>$<input onChange={transportationChange} onBlur={makeTransportation} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Personal Care</td>
                             <td>${personalCareSpent}</td>
-                            <td>$<input onChange={personalCareChange} onBlur={addPersonalCare} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td>$<input onChange={personalCareChange} onBlur={makePersonalCare} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Entertainment</td>
                             <td>${entertainmentSpent}</td>
-                            <td>$<input onChange={entertainmentChange} onBlur={addEntertainment} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td>$<input onChange={entertainmentChange} onBlur={makeEntertainment} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Other</td>
                             <td>${otherSpent}</td>
-                            <td>$<input onChange={otherChange} onBlur={addOther} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td>$<input onChange={otherChange} onBlur={makeOther} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                     </tbody>
                 </table>

@@ -6,7 +6,12 @@ Rails.application.routes.draw do
 
   resources :users
   resources :income_items
-  resources :budget_items
+  resources :foods
+  resources :housings
+  resources :transportations
+  resources :personal_cares
+  resources :entertainments
+  resources :others
   resources :savings_items
 
   get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
