@@ -5,14 +5,22 @@ import axios from 'axios'
 import { PieChart } from 'react-minimal-pie-chart';
 
 function Budget() {
-    const { updateBudget } = useFinanceContext()
-    const [food, setFood] = useState(0)
-    const [housing, setHousing] = useState(0)
-    const [transportation, setTransportation] = useState(0)
-    const [personalCare, setPersonalCare] = useState(0)
-    const [entertainment, setEntertainment] = useState(0)
-    const [other, setOther] = useState(0)
+    const { user, updateBudget } = useFinanceContext()
+    const [food, setFood] = useState('')
+    const [housing, setHousing] = useState('')
+    const [transportation, setTransportation] = useState('')
+    const [personalCare, setPersonalCare] = useState('')
+    const [entertainment, setEntertainment] = useState('')
+    const [other, setOther] = useState('')
     const [itemsData, setItemsData] = useState([])
+    const [update, setUpdate] = useState()
+
+    const [findFood, setFindFood] = useState(0)
+    const [findHousing, setFindHousing] = useState(0)
+    const [findTransportation, setFindTransportation] = useState(0)
+    const [findPersonalCare, setFindPersonalCare] = useState(0)
+    const [findEntertainment, setFindEntertainment] = useState(0)
+    const [findOther, setFindOther] = useState(0)
 
     const foodSpent = Math.abs(itemsData.filter((item) => (item.category === 'food')).map(i => i.amount).reduce((a, b) => a + b, 0))
     const housingSpent = Math.abs(itemsData.filter((item) => (item.category === 'housing')).map(i => i.amount).reduce((a, b) => a + b, 0))
@@ -30,33 +38,62 @@ function Budget() {
     const otherChange = (e) => setOther(e.target.value)
 
 
+    async function editFood() {
+        if (food !== '') {
+            await axios.post(`/foods`, {food: {user_id: user.user.id, amount: food}}, { withCredentials: true })
+            setUpdate(Math.random())
+        }
+    }
+    async function editHousing() {
+        if (housing !== '') {
+            await axios.post(`/housings`, {housing: {user_id: user.user.id, amount: housing}}, { withCredentials: true })
+            setUpdate(Math.random())
+        }
+    }
+    async function editTransportation() {
+        if (transportation !== '') {
+            await axios.post(`/transportations`, {transportation: {user_id: user.user.id, amount: transportation}}, { withCredentials: true })
+            setUpdate(Math.random())
+        }
+    }
+    async function editPersonalCare() {
+        if (personalCare !== '') {
+            await axios.post(`/personal_cares`, {personal_care: {user_id: user.user.id, amount: personalCare}}, { withCredentials: true })
+            setUpdate(Math.random())
+        }
+    }
+    async function editEntertainment() {
+        if (entertainment !== '') {
+            await axios.post(`/entertainments`, {entertainment: {user_id: user.user.id, amount: entertainment}}, { withCredentials: true })
+            setUpdate(Math.random())
+        }
+    }
+    async function editOther() {
+        if (other !== '') {
+            await axios.post(`/others`, {other: {user_id: user.user.id, amount: other}}, { withCredentials: true })
+            setUpdate(Math.random())
+        }
+    }
 
-
-
-    // const addFood = () => axios.patch(`/budget_items/1`, {budget_item: {food: food}}, { withCredentials: true })
-    // const addHousing = () => axios.patch(`/budget_items/2`, {budget_item: {housing: housing}}, { withCredentials: true })
-    // const addTransportation = () => axios.patch(`/budget_items/3`, {budget_item: {transportation: transportation}}, { withCredentials: true })
-    // const addPersonalCare = () => axios.patch(`/budget_items/4`, {budget_item: {personal_care: personalCare}}, { withCredentials: true })
-    // const addEntertainment = () => axios.patch(`/budget_items/5`, {budget_item: {entertainment: entertainment}}, { withCredentials: true })
-    // const addOther = () => axios.patch(`/budget_items/6`, {budget_item: {other: other}}, { withCredentials: true })
-
-    const makeFood = () => axios.post(`/budget_items/1`, {budget_item: {food: food}}, { withCredentials: true })
-    const makeHousing = () => axios.post(`/budget_items/2`, {budget_item: {housing: housing}}, { withCredentials: true })
-    const makeTransportation = () => axios.post(`/budget_items/3`, {budget_item: {transportation: transportation}}, { withCredentials: true })
-    const makePersonalCare = () => axios.post(`/budget_items/4`, {budget_item: {personal_care: personalCare}}, { withCredentials: true })
-    const makeEntertainment = () => axios.post(`/budget_items/5`, {budget_item: {entertainment: entertainment}}, { withCredentials: true })
-    const makeOther = () => axios.post(`/budget_items/6`, {budget_item: {other: other}}, { withCredentials: true })
-
-
-
-
-
+    const totalBudget = ((isNaN(findFood?.amount) ? 0 : findFood?.amount) + (isNaN(findHousing?.amount) ? 0 : findHousing?.amount) + (isNaN(findTransportation?.amount) ? 0 : findTransportation?.amount) + (isNaN(findPersonalCare?.amount) ? 0 : findPersonalCare?.amount) + (isNaN(findEntertainment?.amount) ? 0 : findEntertainment?.amount) + (isNaN(findOther?.amount) ? 0 : findOther?.amount))
 
     useEffect(() => {
         axios.get(`/income_items`, { withCredentials: true })
         .then(res => setItemsData(res.data))
+        axios.get(`/foods`, { withCredentials: true })
+        .then(res => setFindFood(res.data))
+        axios.get(`/housings`, { withCredentials: true })
+        .then(res => setFindHousing(res.data))
+        axios.get(`/transportations`, { withCredentials: true })
+        .then(res => setFindTransportation(res.data))
+        axios.get(`/personal_cares`, { withCredentials: true })
+        .then(res => setFindPersonalCare(res.data))
+        axios.get(`/entertainments`, { withCredentials: true })
+        .then(res => setFindEntertainment(res.data))
+        axios.get(`/others`, { withCredentials: true })
+        .then(res => setFindOther(res.data))
         .catch(err => console.error(err))
-    }, [updateBudget])
+    }, [updateBudget, update])
 
     return (
         <div className='budget-container'>
@@ -82,16 +119,16 @@ function Budget() {
                     <div className="budget-outline-wrapper">
                         <div className="budget-outline-item">
                             <h4 className="budget-outline-name">Total Budget:</h4>
-                            <span className='budget-outline-amount'>$0</span>
+                            <span className='budget-outline-amount'>${(isNaN(totalBudget) ? 0 : totalBudget)}</span>
                         </div>
                         <div className="budget-outline-item">
                             <h4 className="budget-outline-name">Spending:</h4>
-                            <span className='budget-outline-amount'>${totalSpent}</span>
+                            <span className='budget-outline-amount'>${(isNaN(totalSpent) ? 0 : totalSpent)}</span>
                         </div>
                         <div className="budget-outline-separator"></div>
                         <div className="budget-outline-item">
                             <h4 className="budget-outline-name">Left over:</h4>
-                            <span className='budget-outline-amount'>$0</span>
+                            <span className='budget-outline-amount'>${(isNaN(totalBudget - totalSpent)) ? 0 : (totalBudget - totalSpent)}</span>
                         </div>
                     </div>
                 </div>
@@ -108,33 +145,33 @@ function Budget() {
                     <tbody>
                         <tr>
                             <td>Food</td>
-                            <td>${foodSpent}</td>
-                            <td>$<input onChange={foodChange} onBlur={makeFood} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td style={foodSpent > findFood?.amount ? {color: "red"} : {color: "black"}} >${foodSpent}</td>
+                            <td>$<input onInput={foodChange} onBlur={editFood} className='budget-editable' type="number" placeholder={findFood?.amount} /></td>
                         </tr>
                         <tr>
                             <td>Housing</td>
-                            <td>${housingSpent}</td>
-                            <td>$<input onChange={housingChange} onBlur={makeHousing} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td style={housingSpent > findHousing?.amount ? {color: "red"} : {color: "black"}} >${housingSpent}</td>
+                            <td>$<input onInput={housingChange} onBlur={editHousing} className='budget-editable' type="number" placeholder={findHousing?.amount} /></td>
                         </tr>
                         <tr>
                             <td>Transportation</td>
-                            <td>${transportationSpent}</td>
-                            <td>$<input onChange={transportationChange} onBlur={makeTransportation} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td style={transportationSpent > findTransportation?.amount ? {color: "red"} : {color: "black"}} >${transportationSpent}</td>
+                            <td>$<input onInput={transportationChange} onBlur={editTransportation} className='budget-editable' type="number" placeholder={findTransportation?.amount} /></td>
                         </tr>
                         <tr>
                             <td>Personal Care</td>
-                            <td>${personalCareSpent}</td>
-                            <td>$<input onChange={personalCareChange} onBlur={makePersonalCare} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td style={personalCareSpent > findPersonalCare?.amount ? {color: "red"} : {color: "black"}} >${personalCareSpent}</td>
+                            <td>$<input onInput={personalCareChange} onBlur={editPersonalCare} className='budget-editable' type="number" placeholder={findPersonalCare?.amount} /></td>
                         </tr>
                         <tr>
                             <td>Entertainment</td>
-                            <td>${entertainmentSpent}</td>
-                            <td>$<input onChange={entertainmentChange} onBlur={makeEntertainment} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td style={entertainmentSpent > findEntertainment?.amount ? {color: "red"} : {color: "black"}} >${entertainmentSpent}</td>
+                            <td>$<input onInput={entertainmentChange} onBlur={editEntertainment} className='budget-editable' type="number" placeholder={findEntertainment?.amount} /></td>
                         </tr>
                         <tr>
                             <td>Other</td>
-                            <td>${otherSpent}</td>
-                            <td>$<input onChange={otherChange} onBlur={makeOther} className='budget-editable' type="number" placeholder='0' /></td>
+                            <td style={otherSpent > findOther?.amount ? {color: "red"} : {color: "black"}} >${otherSpent}</td>
+                            <td>$<input onInput={otherChange} onBlur={editOther} className='budget-editable' type="number" placeholder={findOther?.amount} /></td>
                         </tr>
                     </tbody>
                 </table>

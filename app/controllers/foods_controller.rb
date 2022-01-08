@@ -3,7 +3,7 @@ class FoodsController < ApplicationController
 
   # GET /foods
   def index
-    @foods = Food.all
+    @foods = User.find_by(id: session[:user_id]).foods.last
 
     render json: @foods
   end

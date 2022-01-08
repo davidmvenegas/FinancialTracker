@@ -3,7 +3,7 @@ class TransportationsController < ApplicationController
 
   # GET /transportations
   def index
-    @transportations = Transportation.all
+    @transportations = User.find_by(id: session[:user_id]).transportations.last
 
     render json: @transportations
   end

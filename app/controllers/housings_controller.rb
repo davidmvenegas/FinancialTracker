@@ -3,7 +3,7 @@ class HousingsController < ApplicationController
 
   # GET /housings
   def index
-    @housings = Housing.all
+    @housings = User.find_by(id: session[:user_id]).housings.last
 
     render json: @housings
   end

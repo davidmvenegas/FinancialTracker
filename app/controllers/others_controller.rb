@@ -3,7 +3,7 @@ class OthersController < ApplicationController
 
   # GET /others
   def index
-    @others = Other.all
+    @others = User.find_by(id: session[:user_id]).others.last
 
     render json: @others
   end

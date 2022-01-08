@@ -3,7 +3,7 @@ class PersonalCaresController < ApplicationController
 
   # GET /personal_cares
   def index
-    @personal_cares = PersonalCare.all
+    @personal_cares = User.find_by(id: session[:user_id]).personal_cares.last
 
     render json: @personal_cares
   end

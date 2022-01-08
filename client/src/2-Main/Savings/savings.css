@@ -15,15 +15,26 @@
 }
 .savings-category-title {
     font-size: 2.125rem;
-    margin-bottom: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1.75rem;
     text-align: center;
 }
+.savings-category-title span:first-of-type {
+    text-transform: uppercase;
+    font-weight: 500;
+}
 .savings-category-title span {
-    font-weight: 300;
+    font-weight: 700;
+}
+.savings-progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .savings-progress-wrapper {
     background-color: #888;
-    width: 37.5rem;
+    width: 42.5rem;
     height: 3.85rem;
     border-radius: 5rem;
     box-shadow: 0 .5rem .75rem rgba(0, 0, 0, 0.35);
@@ -35,11 +46,11 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 10%;
+    width: 0%;
     background: linear-gradient(to top, #EA3546, #ea3547a3);
     border-radius: .2rem;
     box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.15);
-    transition: width 0.6s;
+    transition: width 1s ease-in-out;
 }
 .add-to-savings-form {
     margin-top: 1.125rem;
@@ -125,7 +136,7 @@
     margin: 1rem 0;
     background-color: #eee;
 }
-.savings-card:focus {
+.savings-card:focus-within {
     border-color: #EA3546;
     box-shadow: 0 0 8.5px #EA3546;
 }
@@ -194,7 +205,7 @@
 }
 .savings-card-percent-box h4 {
     font-size: 2rem;
-    font-weight: 300;
+    font-weight: 400;
 }
 .input-type-date {
     cursor: text;

@@ -13,6 +13,10 @@ export const FinanceContextProvider = ({ children }) => {
     const [updateIncome, setUpdateIncome] = useState()
     const [updateBudget, setUpdateBudget] = useState()
     const [updateSavings, setUpdateSavings] = useState()
+    const [savingCurrent, setSavingCurrent] = useState(0)
+    const [savingTotal, setSavingTotal] = useState(0)
+    const [savingName, setSavingName] = useState(0)
+    const [showDisplay, setShowDisplay] = useState(false)
 
 
     useEffect(() => {
@@ -51,7 +55,15 @@ export const FinanceContextProvider = ({ children }) => {
         updateBudget,
         setUpdateBudget,
         updateSavings,
-        setUpdateSavings
+        setUpdateSavings,
+        savingCurrent,
+        setSavingCurrent,
+        savingTotal,
+        setSavingTotal,
+        savingName,
+        setSavingName,
+        showDisplay,
+        setShowDisplay,
     }
 
     return (

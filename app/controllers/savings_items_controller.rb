@@ -27,11 +27,7 @@ class SavingsItemsController < ApplicationController
 
   # PATCH/PUT /savings_items/1
   def update
-    if @savings_item.update(savings_item_params)
-      render json: @savings_item
-    else
-      render json: @savings_item.errors, status: :unprocessable_entity
-    end
+    @savings_item.update(savings_item_params)
   end
 
   # DELETE /savings_items/1
