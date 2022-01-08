@@ -1,17 +1,18 @@
 import './budget.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useFinanceContext } from '../../FinanceContext'
 import axios from 'axios'
 import { PieChart } from 'react-minimal-pie-chart';
 
 function Budget() {
-    const { user } = useFinanceContext()
+    const { user, updateBudget } = useFinanceContext()
     const [food, setFood] = useState(0)
     const [housing, setHousing] = useState(0)
     const [transportation, setTransportation] = useState(0)
     const [personalCare, setPersonalCare] = useState(0)
     const [entertainment, setEntertainment] = useState(0)
     const [other, setOther] = useState(0)
+    const [itemsData, setItemsData] = useState([])
 
     const foodChange = (e) => setFood(e.target.value)
     const housingChange = (e) => setHousing(e.target.value)
@@ -21,23 +22,37 @@ function Budget() {
     const otherChange = (e) => setOther(e.target.value)
 
     async function addFood() {
-        await axios.patch(`/budget_item/${user.user.id}`, {budget_item: {food: food}}, { withCredentials: true })
+        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {food: food}}, { withCredentials: true })
     }
     async function addHousing() {
-        await axios.patch(`/budget_item/${user.user.id}`, {budget_item: {housing: housing}}, { withCredentials: true })
+        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {housing: housing}}, { withCredentials: true })
     }
     async function addTransportation() {
-        await axios.patch(`/budget_item/${user.user.id}`, {budget_item: {transportation: transportation}}, { withCredentials: true })
+        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {transportation: transportation}}, { withCredentials: true })
     }
     async function addPersonalCare() {
-        await axios.patch(`/budget_item/${user.user.id}`, {budget_item: {personal_care: personalCare}}, { withCredentials: true })
+        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {personal_care: personalCare}}, { withCredentials: true })
     }
     async function addEntertainment() {
-        await axios.patch(`/budget_item/${user.user.id}`, {budget_item: {entertainment: entertainment}}, { withCredentials: true })
+        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {entertainment: entertainment}}, { withCredentials: true })
     }
     async function addOther() {
-        await axios.patch(`/budget_item/${user.user.id}`, {budget_item: {other: other}}, { withCredentials: true })
+        await axios.patch(`/budget_items/${user.user.id}`, {budget_item: {other: other}}, { withCredentials: true })
     }
+
+    useEffect(() => {
+        axios.get(`/income_items`, { withCredentials: true })
+        .then(res => setItemsData(res.data))
+        .catch(err => console.error(err))
+    }, [updateBudget])
+
+    const foodSpent = Math.abs(itemsData.filter((item) => (item.category === 'food')).map(i => i.amount).reduce((a, b) => a + b, 0))
+    const housingSpent = Math.abs(itemsData.filter((item) => (item.category === 'housing')).map(i => i.amount).reduce((a, b) => a + b, 0))
+    const transportationSpent = Math.abs(itemsData.filter((item) => (item.category === 'transportation')).map(i => i.amount).reduce((a, b) => a + b, 0))
+    const personalCareSpent = Math.abs(itemsData.filter((item) => (item.category === 'personal_care')).map(i => i.amount).reduce((a, b) => a + b, 0))
+    const entertainmentSpent = Math.abs(itemsData.filter((item) => (item.category === 'entertainment')).map(i => i.amount).reduce((a, b) => a + b, 0))
+    const otherSpent = Math.abs(itemsData.filter((item) => (item.category === 'other')).map(i => i.amount).reduce((a, b) => a + b, 0))
+    const totalSpent = (foodSpent + housingSpent + transportationSpent + personalCareSpent + entertainmentSpent + otherSpent)
 
     return (
         <div className='budget-container'>
@@ -67,7 +82,7 @@ function Budget() {
                         </div>
                         <div className="budget-outline-item">
                             <h4 className="budget-outline-name">Spending:</h4>
-                            <span className='budget-outline-amount'>$0</span>
+                            <span className='budget-outline-amount'>${totalSpent}</span>
                         </div>
                         <div className="budget-outline-separator"></div>
                         <div className="budget-outline-item">
@@ -89,32 +104,32 @@ function Budget() {
                     <tbody>
                         <tr>
                             <td>Food</td>
-                            <td>$0</td>
+                            <td>${foodSpent}</td>
                             <td>$<input onChange={foodChange} onBlur={addFood} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Housing</td>
-                            <td>$0</td>
+                            <td>${housingSpent}</td>
                             <td>$<input onChange={housingChange} onBlur={addHousing} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Transportation</td>
-                            <td>$0</td>
+                            <td>${transportationSpent}</td>
                             <td>$<input onChange={transportationChange} onBlur={addTransportation} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Personal Care</td>
-                            <td>$0</td>
+                            <td>${personalCareSpent}</td>
                             <td>$<input onChange={personalCareChange} onBlur={addPersonalCare} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Entertainment</td>
-                            <td>$0</td>
+                            <td>${entertainmentSpent}</td>
                             <td>$<input onChange={entertainmentChange} onBlur={addEntertainment} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                         <tr>
                             <td>Other</td>
-                            <td>$0</td>
+                            <td>${otherSpent}</td>
                             <td>$<input onChange={otherChange} onBlur={addOther} className='budget-editable' type="number" placeholder='0' /></td>
                         </tr>
                     </tbody>

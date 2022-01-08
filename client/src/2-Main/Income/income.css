@@ -119,7 +119,8 @@
 }
 .income-table-body {
     display: block;
-    max-height: 40rem;
+    min-height: 38.5rem;
+    max-height: 38.5rem;
     overflow-y: auto;
 }
 .income-body table {

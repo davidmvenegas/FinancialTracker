@@ -5,15 +5,13 @@ import axios from 'axios'
 import IncomeItem from './IncomeItem'
 
 function Income() {
-    const { user, updateIncome } = useFinanceContext()
+    const { user, updateIncome, setUpdateBudget, setUpdateUser } = useFinanceContext()
     const [description, setDescription] = useState("")
     const [amount, setAmount] = useState(0)
     const [category, setCategory] = useState("")
     const [type, setType] = useState("")
     const [incomeItemData, setIncomeItemData] = useState([])
     const [search, setSearch] = useState("")
-    const [userIncome, setUserIncome] = useState(0)
-    const [userExpenses, setUserExpenses] = useState(0)
 
     let today = new Date()
     let mm = today.getMonth()+1
@@ -26,11 +24,7 @@ function Income() {
     const categoryEl = document.getElementById('categoryID')
 
     const handleDescriptionChange = (e) => setDescription(e.target.value)
-    const handleAmountChange = (e) => {
-        setAmount((type === 'income') ? Math.abs(e.target.value) : -Math.abs(e.target.value))
-        setUserIncome((type === 'income') ? Math.abs(e.target.value) : 0)
-        setUserExpenses((type === 'expense') ? Math.abs(e.target.value) : 0)
-    }
+    const handleAmountChange = (e) => setAmount((type === 'income') ? Math.abs(e.target.value) : -Math.abs(e.target.value))
     const handleCategoryChange = (e) => setCategory(e.target.value)
     const handleTypeChange = (e) => {
         setDescription('')
@@ -61,23 +55,18 @@ function Income() {
                 date: todaysDate,
             }
         }, { withCredentials: true })
-        await axios.patch(`/users/${user.user.id}`, {
-            user: {
-                total_income: userIncome,
-                total_expenses: userExpenses,
-                balance: (userIncome - userExpenses)
-            }
-        }, { withCredentials: true })
         .catch(err => console.error(err))
         const response = await axios.get(`/income_items`, { withCredentials: true })
         setIncomeItemData(response.data)
+        setUpdateBudget(Math.random())
+        setUpdateUser(Math.random())
     }
 
     const handleSearch = (e) => setSearch(e.target.value)
+    const filteredItems = incomeItemData.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
 
-    const filteredItems = incomeItemData.filter((item) => {
-        return item.name.toLowerCase().includes(search.toLowerCase())
-    })
+    const totalIncome = Math.abs(incomeItemData.filter((item) => (item.category === '')).map(i => i.amount).reduce((a, b) => a + b, 0))
+    const totalExpenses = Math.abs(incomeItemData.filter((item) => (item.category !== '')).map(i => i.amount).reduce((a, b) => a + b, 0))
 
     useEffect(() => {
         axios.get(`/income_items`, { withCredentials: true })
@@ -94,15 +83,15 @@ function Income() {
                 </div>
                 <div className="income-header-box2">
                     <h2 className='income-category-title'>Income</h2>
-                    <div className="income-category-amount"><h2><span>$</span> 0</h2></div>
+                    <div className="income-category-amount"><h2><span>$</span> {totalIncome}</h2></div>
                 </div>
                 <div className="income-header-box3">
                     <h2 className='income-category-title'>Expenses</h2>
-                    <div className="income-category-amount"><h2><span>$</span> 0</h2></div>
+                    <div className="income-category-amount"><h2><span>$</span> {totalExpenses}</h2></div>
                 </div>
                 <div className="income-header-box4">
                     <h2 className='income-category-title'>Total Balance</h2>
-                    <div className="income-category-amount"><h2><span>$</span> 0</h2></div>
+                    <div className="income-category-amount"><h2><span>$</span> {(totalIncome - totalExpenses)}</h2></div>
                 </div>
             </div>
             <div className="income-form-container">

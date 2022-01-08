@@ -3,7 +3,8 @@ class IncomeItemsController < ApplicationController
 
   # GET /income_items
   def index
-    @income_items = IncomeItem.all
+    @user = User.find_by(id: session[:user_id])
+    @income_items = @user.income_items
     @new_items = @income_items.sort_by { |hash| hash['key'] }.reverse
     render json: @new_items
   end

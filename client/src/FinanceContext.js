@@ -8,8 +8,10 @@ export const useFinanceContext = () => useContext(allFinanceContext)
 export const FinanceContextProvider = ({ children }) => {
     const navigate = useNavigate()
     const [user, setUser] = useState({})
+    const [updateUser, setUpdateUser] = useState()
     const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN")
     const [updateIncome, setUpdateIncome] = useState()
+    const [updateBudget, setUpdateBudget] = useState()
     const [updateSavings, setUpdateSavings] = useState()
 
 
@@ -25,7 +27,7 @@ export const FinanceContextProvider = ({ children }) => {
             }
         })
         .catch(err => console.error(err))
-    }, [loggedInStatus])
+    }, [loggedInStatus, updateUser])
 
     function handleSuccesfulAuth(data) {
         setUser(data)
@@ -40,11 +42,14 @@ export const FinanceContextProvider = ({ children }) => {
 
     const allFinanceValues = {
         user,
+        setUpdateUser,
         loggedInStatus,
         handleSuccesfulAuth, 
         handleLogout,
         updateIncome,
         setUpdateIncome,
+        updateBudget,
+        setUpdateBudget,
         updateSavings,
         setUpdateSavings
     }

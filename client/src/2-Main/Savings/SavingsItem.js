@@ -20,11 +20,7 @@ function SavingsItem({data}) {
 
     async function handleSubmit(e) {
         e.preventDefault()
-        await axios.patch(`/savings_items/${data.id}`, {
-            savings_item: {
-                current_amount: amountToAdd,
-            }
-        }, { withCredentials: true })
+        await axios.patch(`/savings_items/${data.id}`, {savings_item: {current_amount: amountToAdd}}, { withCredentials: true })
         .catch(err => console.error(err))
         await setUpdateSavings(Math.random())
         setAmountToAdd('')
@@ -44,7 +40,7 @@ function SavingsItem({data}) {
                 </div>
                 <div className="savings-card-percent-box">
                     <h2>Completion:</h2>
-                    <h4>{percentage}%</h4> 
+                    <h4 style={percentage > 99 ? {color: "limegreen", fontWeight: 500} : {color: 'inherit'}}>{parseInt(percentage)}%</h4> 
                 </div>
                 <div onClick={handleDeleteIncome} className="delete-savings-item">X</div>
             </div>

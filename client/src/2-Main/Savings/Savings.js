@@ -40,10 +40,7 @@ function Savings() {
     }
     
     const handleSearch = (e) => setSearch(e.target.value)
-    
-    const filteredItems = savingData.filter((item) => {
-        return item.name.toLowerCase().includes(search.toLowerCase())
-    })
+    const filteredItems = savingData.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
 
     useEffect(() => {
         axios.get(`/savings_items`, { withCredentials: true })
