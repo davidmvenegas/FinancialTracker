@@ -14,7 +14,7 @@ function Header() {
         axios.delete('/logout', { withCredentials: true })
         .then(() => handleLogout())
         .catch(err => console.error(err))
-        navigate('/')
+        navigate('/landing')
     }
 
     return (

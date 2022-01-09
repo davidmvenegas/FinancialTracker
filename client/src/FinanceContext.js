@@ -1,6 +1,4 @@
-import { React, useContext, createContext, useState, useEffect } from 'react'
-import axios from 'axios'
-
+import { React, useContext, createContext, useState } from 'react'
 export const allFinanceContext = createContext({});
 export const useFinanceContext = () => useContext(allFinanceContext)
 
@@ -17,20 +15,6 @@ export const FinanceContextProvider = ({ children }) => {
     const [savingTotal, setSavingTotal] = useState(0)
     const [savingName, setSavingName] = useState(0)
     const [showDisplay, setShowDisplay] = useState(false)
-
-    useEffect(() => {
-        axios.get('/logged_in', { withCredentials: true })
-        .then(res => {
-            if (res.data.logged_in) {
-                setUser(res.data)
-                setLoggedInStatus("LOGGED_IN")
-            } else if (!res.data.logged_in) {
-                setUser({})
-                setLoggedInStatus("NOT_LOGGED_IN")
-            }
-        })
-        .catch(err => console.error(err))
-    }, [loggedInStatus, updateUser])
 
     function handleSuccesfulAuth(data) {
         setUser(data)
@@ -60,8 +44,11 @@ export const FinanceContextProvider = ({ children }) => {
 
     const allFinanceValues = {
         user,
+        setUser,
+        updateUser,
         setUpdateUser,
         loggedInStatus,
+        setLoggedInStatus,
         handleSuccesfulAuth,
         handleSuccesfulLog,
         handleLogout,
