@@ -3,6 +3,7 @@ import { React, useState, useEffect } from 'react'
 import { useFinanceContext } from '../FinanceContext'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import swal from 'sweetalert';
 
 function Profile() {
     const { user } = useFinanceContext()
@@ -30,6 +31,7 @@ function Profile() {
 
     function handleSubmit(e) {
         e.preventDefault()
+        swal("Success!", "Your profile has been updated", "success");
         axios.patch(`/users/${user.user.id}`, {
             user: {
                 first_name: ((firstName !== '') ? firstName : user.user.first_name),
