@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 2022_01_08_032104) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  :id, :username, :email, :password_digest, :age, :gender, :marital_status, :annual_income
+
   add_foreign_key "entertainments", "users"
   add_foreign_key "foods", "users"
   add_foreign_key "housings", "users"

@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :password_digest, :age, :gender, :marital_status, :annual_income
+  attributes :id, :username, :email, :password_digest, :age, :gender, :marital_status, :annual_income, :first_name, :last_name, :profile_picture
   has_many :savings_items
   has_many :income_items
   has_many :foods

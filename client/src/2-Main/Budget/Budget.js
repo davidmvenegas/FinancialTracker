@@ -76,6 +76,8 @@ function Budget() {
     }
 
     const totalBudget = ((isNaN(findFood?.amount) ? 0 : findFood?.amount) + (isNaN(findHousing?.amount) ? 0 : findHousing?.amount) + (isNaN(findTransportation?.amount) ? 0 : findTransportation?.amount) + (isNaN(findPersonalCare?.amount) ? 0 : findPersonalCare?.amount) + (isNaN(findEntertainment?.amount) ? 0 : findEntertainment?.amount) + (isNaN(findOther?.amount) ? 0 : findOther?.amount))
+    const remaining = (isNaN(totalBudget - totalSpent)) ? 0 : (totalBudget - totalSpent)
+    const remainingOrZero = (remaining < 0) ? 0 : remaining
 
     useEffect(() => {
         axios.get(`/income_items`, { withCredentials: true })
@@ -96,25 +98,11 @@ function Budget() {
     }, [updateBudget, update])
 
     const pieData = {
-            labels: [
-                'Food',
-                'Housing',
-                'Transportation',
-                'Personal Care',
-                'Entertainment',
-                'Other'
-            ],
+            labels: ['Food', 'Housing', 'Transportation', 'Personal Care', 'Entertainment', 'Other', "Remaining"],
             datasets: [{
             label: 'My First Dataset',
-            data: [foodSpent, housingSpent, transportationSpent, personalCareSpent, entertainmentSpent, otherSpent],
-            backgroundColor: [
-                '#f94144',
-                '#f3722c',
-                '#f9c74f',
-                '#90be6d',
-                '#577590',
-                '#277da1',
-            ],
+            data: [foodSpent, housingSpent, transportationSpent, personalCareSpent, entertainmentSpent, otherSpent, remainingOrZero],
+            backgroundColor: ['#f94144', '#f3722c', '#f9c74f', '#90be6d', '#577590', '#277da1', '#888'],
             hoverOffset: 4
             }]
         }
@@ -152,8 +140,8 @@ function Budget() {
                         </div>
                         <div className="budget-outline-separator"></div>
                         <div className="budget-outline-item">
-                            <h4 className="budget-outline-name">Left over:</h4>
-                            <span style={(isNaN(totalSpent) ? 0 : totalSpent) > (isNaN(totalBudget) ? 0 : totalBudget) ? {color: "red"} : {color: "black"}} className='budget-outline-amount'>${(isNaN(totalBudget - totalSpent)) ? 0 : (totalBudget - totalSpent)}</span>
+                            <h4 className="budget-outline-name">Remaining:</h4>
+                            <span style={(isNaN(totalSpent) ? 0 : totalSpent) > (isNaN(totalBudget) ? 0 : totalBudget) ? {color: "red"} : {color: "black"}} className='budget-outline-amount'>${remaining}</span>
                         </div>
                     </div>
                 </div>

@@ -60,7 +60,7 @@
     height: 4.5rem;
     background: transparent;
     font-size: 1.75rem;
-    color: #555555;
+    color: black;
     line-height: 1.2;
     padding: .5rem .2rem 0;
     border: none;
@@ -103,6 +103,9 @@
 }
 .profile-input:focus + .profile-input-focus::before {
     width: 100%;
+}
+.profile-input::placeholder {
+    color: black;
 }
 .profile-submit-btn-container {
     position: relative;
