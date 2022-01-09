@@ -72,19 +72,25 @@ function Landing() {
 
     function handleRegSubmit(e) {
         e.preventDefault()
-        axios.post('/registrations', {
-            user: {
-                username: username,
-                email: regEmail,
-                password: regPassword,
-                passwordConfirmation: passwordConfirmation
-            }
-        }, { withCredentials: true })
-        .then(res => {
-            handleSuccesfulAuth(res.data)
-            navigate('/main')
-        })
-        .catch(() => swal("Oops!", "That email is already registered!", "error"))
+        if (regPassword !== passwordConfirmation) {
+            swal("Oops!", "Passwords do not match! Please try again", "error")
+        } else if (regPassword.length < 4) {
+            swal("Oops!", "Password is weak! Please use something more secure", "error")
+        } else {
+            axios.post('/registrations', {
+                user: {
+                    username: username,
+                    email: regEmail,
+                    password: regPassword,
+                    passwordConfirmation: passwordConfirmation
+                }
+            }, { withCredentials: true })
+            .then(res => {
+                handleSuccesfulAuth(res.data)
+                navigate('/main')
+            })
+            .catch(() => swal("Oops!", "That email is already registered!", "error"))
+        }
     }
 
     function handleLogSubmit(e) {

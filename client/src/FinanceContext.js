@@ -25,11 +25,9 @@ export const FinanceContextProvider = ({ children }) => {
         if (data.logged_in) {
             setUser(data)
             setLoggedInStatus("LOGGED_IN")
-            console.log("good")
         } else if (!data.logged_in) {
             setUser({})
             setLoggedInStatus("NOT_LOGGED_IN")
-            console.log("bad")
         }
         return data
     }
