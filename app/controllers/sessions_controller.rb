@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
         if user
             session[:user_id] = user.id
             render json: {
-                status: :created,
+                status: 201,
                 logged_in: true,
                 user: user
             }
         else
-            render json: { status: 401 }
+            render json: { status: 418 }
         end
     end
 

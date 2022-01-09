@@ -1,12 +1,14 @@
 import './landing.css'
 import { React, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useFinanceContext } from '../FinanceContext'
+import { useNavigate } from 'react-router-dom'
+import swal from 'sweetalert';
 import Logo from '../images/logo.png'
 import axios from 'axios'
 
 function Landing() {
-    const { loggedInStatus, handleSuccesfulAuth } = useFinanceContext()
+    const navigate = useNavigate()
+    const { handleSuccesfulAuth, handleSuccesfulLog } = useFinanceContext()
     const [logEmail, setLogEmail] = useState("")
     const [logPassword, setLogPassword] = useState("")
     const [regEmail, setRegEmail] = useState("")
@@ -29,12 +31,24 @@ function Landing() {
     const registerForm = document.querySelector(".register-form")
     const lostPasswordForm = document.querySelector(".lost-password-form")
 
+    function clearRegForm() {
+        setRegEmail('')
+        setUsername('')
+        setRegPassword('')
+        setPasswordConfirmation('')
+    }
+    function clearLogForm() {
+        setLogEmail('')
+        setLogPassword('')
+    }
+
     registerBtn.forEach((btn) =>{
         btn.addEventListener("click", () => {
             box.classList.add("slide-active")
             registerForm.classList.remove("form-hidden")
             loginForm.classList.add("form-hidden")
             lostPasswordForm.classList.add("form-hidden")
+            clearLogForm()
         })
     })
     loginBtn.forEach((btn) =>{
@@ -43,6 +57,7 @@ function Landing() {
             registerForm.classList.add("form-hidden")
             loginForm.classList.remove("form-hidden")
             lostPasswordForm.classList.add("form-hidden")
+            clearRegForm()
         })
     })
     lostPassBtn.forEach((btn) =>{
@@ -50,6 +65,8 @@ function Landing() {
             registerForm.classList.add("form-hidden")
             loginForm.classList.add("form-hidden")
             lostPasswordForm.classList.remove("form-hidden")
+            clearLogForm()
+            clearRegForm()
         })
     })
 
@@ -63,8 +80,11 @@ function Landing() {
                 passwordConfirmation: passwordConfirmation
             }
         }, { withCredentials: true })
-        .then(res => handleSuccesfulAuth(res.data))
-        .catch(err => console.error(err))
+        .then(res => {
+            handleSuccesfulAuth(res.data)
+            navigate('/main')
+        })
+        .catch(() => swal("Oops!", "That email is already registered!", "error"))
     }
 
     function handleLogSubmit(e) {
@@ -75,14 +95,21 @@ function Landing() {
                 password: logPassword,
             }
         }, { withCredentials: true })
-        .then(res => handleSuccesfulAuth(res.data))
-        .catch(err => console.error(err))
+        .then(res => handlePendingLog(res))
+        .catch((err) => console.log(err))
+    }
+    
+    function handlePendingLog(res) {
+        handleSuccesfulLog(res.data)
+        if (res.data.status === 201){
+            navigate('/main')
+        } else {
+            swal("Oops!", "Wrong Password! Please try again or reset your password", "error")
+        }
     }
 
     return (
         <div>
-            <p>Status: {loggedInStatus}</p>
-            <Link to='/main'>Go to Main</Link>
             <div className="login-page">
                 <div className="login-logo-box">
                     <div className="login-content-box">
@@ -104,11 +131,11 @@ function Landing() {
                         <form onSubmit={handleLogSubmit} className="login-form">
                             <h3>Log In</h3>
                             <div className="form-group">
-                                <input onChange={handleLogEmailChange} type="text" placeholder="Email Address" className="form-control" required />
+                                <input onChange={handleLogEmailChange} value={logEmail} type="text" placeholder="Email Address" className="form-control" required />
                                 <span className="landing-input-focus"></span>
                             </div>
                             <div className="form-group">
-                                <input onChange={handleLogPasswordChange} type="password" placeholder="Password" className="form-control" required />
+                                <input onChange={handleLogPasswordChange} value={logPassword} type="password" placeholder="Password" className="form-control" required />
                                 <span className="landing-input-focus"></span>
                             </div>
                             <button type="submit" className="submit-btn">Login</button>
@@ -117,19 +144,19 @@ function Landing() {
                         <form onSubmit={handleRegSubmit} className="register-form form-hidden">
                             <h3>Register</h3>
                             <div className="form-group">
-                                <input onChange={handleUsernameChange} type="text" placeholder="Name" className="form-control" required />
+                                <input onChange={handleUsernameChange} value={username} type="text" placeholder="Name" className="form-control" required />
                                 <span className="landing-input-focus"></span>
                             </div>
                             <div className="form-group">
-                                <input onChange={handleRegEmailChange} type="email" placeholder="Email Address" className="form-control" required />
+                                <input onChange={handleRegEmailChange} value={regEmail} type="email" placeholder="Email Address" className="form-control" required />
                                 <span className="landing-input-focus"></span>
                             </div>
                             <div className="form-group">
-                                <input onChange={handleRegPasswordChange} type="password" placeholder="Password" className="form-control" required />
+                                <input onChange={handleRegPasswordChange} value={regPassword} type="password" placeholder="Password" className="form-control" required />
                                 <span className="landing-input-focus"></span>
                             </div>
                             <div className="form-group">
-                                <input onChange={handlePasswordConfirmationChange} type="password" placeholder="Confirm Password" className="form-control" required />
+                                <input onChange={handlePasswordConfirmationChange} value={passwordConfirmation} type="password" placeholder="Confirm Password" className="form-control" required />
                                 <span className="landing-input-focus"></span>
                             </div>
                             <button type="submit" className="submit-btn">Register</button>

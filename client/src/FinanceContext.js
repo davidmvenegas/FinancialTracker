@@ -1,12 +1,10 @@
 import { React, useContext, createContext, useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export const allFinanceContext = createContext({});
 export const useFinanceContext = () => useContext(allFinanceContext)
 
 export const FinanceContextProvider = ({ children }) => {
-    const navigate = useNavigate()
     const [user, setUser] = useState({})
     const [updateUser, setUpdateUser] = useState()
     const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN")
@@ -23,10 +21,10 @@ export const FinanceContextProvider = ({ children }) => {
     useEffect(() => {
         axios.get('/logged_in', { withCredentials: true })
         .then(res => {
-            if (res.data.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
+            if (res.data.logged_in) {
                 setUser(res.data)
                 setLoggedInStatus("LOGGED_IN")
-            } else if (!res.data.logged_in && loggedInStatus === "LOGGED_IN") {
+            } else if (!res.data.logged_in) {
                 setUser({})
                 setLoggedInStatus("NOT_LOGGED_IN")
             }
@@ -37,7 +35,19 @@ export const FinanceContextProvider = ({ children }) => {
     function handleSuccesfulAuth(data) {
         setUser(data)
         setLoggedInStatus("LOGGED_IN")
-        navigate('/main')
+    }
+
+    function handleSuccesfulLog(data) {
+        if (data.logged_in) {
+            setUser(data)
+            setLoggedInStatus("LOGGED_IN")
+            console.log("good")
+        } else if (!data.logged_in) {
+            setUser({})
+            setLoggedInStatus("NOT_LOGGED_IN")
+            console.log("bad")
+        }
+        return data
     }
 
     function handleLogout() {
@@ -52,7 +62,8 @@ export const FinanceContextProvider = ({ children }) => {
         user,
         setUpdateUser,
         loggedInStatus,
-        handleSuccesfulAuth, 
+        handleSuccesfulAuth,
+        handleSuccesfulLog,
         handleLogout,
         updateIncome,
         setUpdateIncome,
