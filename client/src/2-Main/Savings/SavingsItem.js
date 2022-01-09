@@ -33,15 +33,15 @@ function SavingsItem({data}) {
         setSavingName(data.name)
     }
 
-    function handleBlur() {
-        setShowDisplay(false)
+    function handleBlur(e) {
+        if (!e.currentTarget.contains(e.relatedTarget)) setShowDisplay(false)
     }
 
     return (
         <div tabIndex="1" onClick={handleClick} onBlur={handleBlur} className="savings-card" >
             <div className="savings-card-wrapper">
                 <h1 className="savings-card-title">{data.name}</h1>
-                <form tabIndex="1" onSubmit={handleSubmit} className="add-to-savings-form">
+                <form onSubmit={handleSubmit} className="add-to-savings-form">
                     <input onChange={handleChange} value={amountToAdd} type="number" placeholder='$' required/>
                     <button type="submit">Add</button>
                 </form>
@@ -62,16 +62,21 @@ function SavingsItem({data}) {
 export const SavingItemDisplay = () => {
     const { showDisplay, savingCurrent, savingTotal, savingName } = useFinanceContext()
     const percentage = (((100 * savingCurrent) / savingTotal) < 99 ? ((100 * savingCurrent) / savingTotal) : 100)
+
+    console.log(savingCurrent)
+
     return (
-        showDisplay ?
-        (<div style={showDisplay ? {opacity: '100'} : {opacity: '0'}} className="savings-header-box2">
-            <div className="savings-progress-container">
-                <h2 className='savings-category-title'><span>{savingName}:</span> (<span>${savingCurrent}</span> of <span>${savingTotal}</span>)</h2>
-                <div className="savings-progress-wrapper">
-                    <span style={showDisplay ? {width: `${percentage}%`} : {width: `0%`}} className="savings-progress" id="savings-progress"></span>
+        <div className='savings-progress-main-container'>
+            <div className="savings-header-box2">
+                <div className="savings-progress-container">
+                    <h2 style={showDisplay ? {animation: 'fadeIn .5s ease-in .125s forwards'} : null} className='savings-category-title'><span>{savingName}:</span>&nbsp;&nbsp;<span>${savingCurrent}</span> of <span>${savingTotal}</span></h2>
+                    <div className="savings-progress-wrapper">
+                        <span style={showDisplay ? {width: `${percentage}%`} : {width: `0%`}} className="savings-progress" id="savings-progress"></span>
+                    </div>
                 </div>
             </div>
-        </div>) : (<h1>Hello world</h1>)
+            <p style={!showDisplay ? {animation: 'fadeIn .5s ease-in .125s forwards'} : null} className='savings-header-instructions'>Select a Goal to see its progress</p>
+        </div>
     )
 }
 

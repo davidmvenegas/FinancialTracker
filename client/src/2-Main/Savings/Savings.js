@@ -1,17 +1,15 @@
 import './savings.css'
-import { React, useEffect, useState } from 'react'
+import { React, useState } from 'react'
 import { useFinanceContext } from '../../FinanceContext'
 import axios from 'axios'
 import SavingsItem from './SavingsItem'
 import { SavingItemDisplay } from './SavingsItem'
 
 function Savings() {
-    const { user, updateSavings } = useFinanceContext()
+    const { user, setSavingData, handleSearch, filteredItems } = useFinanceContext()
     const [title, setTitle] = useState("")
     const [amount, setAmount] = useState("")
     const [date, setDate] = useState("")
-    const [savingData, setSavingData] = useState([])
-    const [search, setSearch] = useState("")
 
     const handleTitleChange = (e) => setTitle(e.target.value)
     const handleAmountChange = (e) => setAmount(e.target.value)
@@ -39,15 +37,6 @@ function Savings() {
         const response = await axios.get(`/savings_items`, { withCredentials: true })
         setSavingData(response.data)
     }
-    
-    const handleSearch = (e) => setSearch(e.target.value)
-    const filteredItems = savingData.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
-
-    useEffect(() => {
-        axios.get(`/savings_items`, { withCredentials: true })
-        .then(res => setSavingData(res.data))
-        .catch(err => console.error(err))
-    }, [updateSavings])
 
     return (
         <div className='savings-container'>

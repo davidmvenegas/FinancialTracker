@@ -12,12 +12,13 @@ export const FinanceContextProvider = ({ children }) => {
     const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN")
     const [updateIncome, setUpdateIncome] = useState()
     const [updateBudget, setUpdateBudget] = useState()
+    const [savingData, setSavingData] = useState([])
+    const [search, setSearch] = useState("")
     const [updateSavings, setUpdateSavings] = useState()
     const [savingCurrent, setSavingCurrent] = useState(0)
     const [savingTotal, setSavingTotal] = useState(0)
     const [savingName, setSavingName] = useState(0)
     const [showDisplay, setShowDisplay] = useState(false)
-
 
     useEffect(() => {
         axios.get('/logged_in', { withCredentials: true })
@@ -44,6 +45,15 @@ export const FinanceContextProvider = ({ children }) => {
         setLoggedInStatus("NOT_LOGGED_IN")
     }
 
+    useEffect(() => {
+        axios.get(`/savings_items`, { withCredentials: true })
+        .then(res => setSavingData(res.data))
+        .catch(err => console.error(err))
+    }, [updateSavings])
+
+    const handleSearch = (e) => setSearch(e.target.value)
+    const filteredItems = savingData.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+
     const allFinanceValues = {
         user,
         setUpdateUser,
@@ -54,6 +64,12 @@ export const FinanceContextProvider = ({ children }) => {
         setUpdateIncome,
         updateBudget,
         setUpdateBudget,
+        savingData,
+        setSavingData,
+        search, 
+        setSearch,
+        handleSearch,
+        filteredItems,
         updateSavings,
         setUpdateSavings,
         savingCurrent,
