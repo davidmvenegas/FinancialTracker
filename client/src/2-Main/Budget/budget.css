@@ -13,9 +13,6 @@
     width: 60%;
     margin: 3.5rem 0;
 }
-.budget-pie {
-    height: 17rem;
-}
 .budget-header-box3 {
     height: 16rem;
     width: 18rem;
@@ -90,4 +87,7 @@
 }
 .budget-editable::placeholder {
     color: #000;
+}
+#budget-pie {
+    margin: -10rem 0;
 }

@@ -4,7 +4,7 @@ import axios from 'axios'
 import Delete from '../../images/red_x_icon.png'
 
 function IncomeItem({data}) {
-    const { setUpdateIncome } = useFinanceContext()
+    const { setUpdateIncome, setUpdateBudget } = useFinanceContext()
 
     let correctName = data.name
     let correctDate = data.date
@@ -43,6 +43,7 @@ function IncomeItem({data}) {
         await axios.delete(`/income_items/${data.id}`, { withCredentials: true })
         .catch(err => console.error(err))
         await setUpdateIncome(Math.random())
+        await setUpdateBudget(Math.random())
     }
 
     return (

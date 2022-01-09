@@ -2,7 +2,7 @@ import './budget.css'
 import React, { useState, useEffect } from 'react'
 import { useFinanceContext } from '../../FinanceContext'
 import axios from 'axios'
-import { PieChart } from 'react-minimal-pie-chart';
+import { Pie } from 'react-chartjs-2'
 
 function Budget() {
     const { user, updateBudget } = useFinanceContext()
@@ -95,6 +95,40 @@ function Budget() {
         .catch(err => console.error(err))
     }, [updateBudget, update])
 
+    const pieData = {
+            labels: [
+                'Food',
+                'Housing',
+                'Transportation',
+                'Personal Care',
+                'Entertainment',
+                'Other'
+            ],
+            datasets: [{
+            label: 'My First Dataset',
+            data: [foodSpent, housingSpent, transportationSpent, personalCareSpent, entertainmentSpent, otherSpent],
+            backgroundColor: [
+                '#f94144',
+                '#f3722c',
+                '#f9c74f',
+                '#90be6d',
+                '#577590',
+                '#277da1',
+            ],
+            hoverOffset: 4
+            }]
+        }
+    const pieOptions = {
+        plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        boxWidth: 12.5,
+                    }
+                }
+            }
+        }
+
     return (
         <div className='budget-container'>
             <div className="budget-header">
@@ -103,16 +137,7 @@ function Budget() {
                     <p className='main-section-description'>Keep Track of your Expenses</p>
                 </div>
                 <div className="budget-header-box2">
-                    <PieChart className='budget-pie'
-                        data={[
-                            { title: 'One', value: 10, color: '#E38627' },
-                            { title: 'Two', value: 15, color: '#C13C37' },
-                            { title: 'Three', value: 20, color: '#6A2135' },
-                        ]}
-                        animate={true}
-                        labelPosition={50}
-                        animationEasing="ease-out"
-                    />
+                    <Pie id='budget-pie' data={pieData} options={pieOptions} />
                 </div>
                 <div className="budget-header-box3">
                     <h2 className='budget-outline-title'>This Month...</h2>
@@ -128,7 +153,7 @@ function Budget() {
                         <div className="budget-outline-separator"></div>
                         <div className="budget-outline-item">
                             <h4 className="budget-outline-name">Left over:</h4>
-                            <span className='budget-outline-amount'>${(isNaN(totalBudget - totalSpent)) ? 0 : (totalBudget - totalSpent)}</span>
+                            <span style={(isNaN(totalSpent) ? 0 : totalSpent) > (isNaN(totalBudget) ? 0 : totalBudget) ? {color: "red"} : {color: "black"}} className='budget-outline-amount'>${(isNaN(totalBudget - totalSpent)) ? 0 : (totalBudget - totalSpent)}</span>
                         </div>
                     </div>
                 </div>
