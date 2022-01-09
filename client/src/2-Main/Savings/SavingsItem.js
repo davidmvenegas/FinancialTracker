@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useFinanceContext } from '../../FinanceContext'
 import axios from 'axios'
 
 function SavingsItem({data}) {
-    const { setUpdateSavings, setShowDisplay, setSavingCurrent, setSavingTotal, setSavingName } = useFinanceContext()
+    const { setUpdateSavings, setShowDisplay, setSavingCurrent, setSavingTotal, setSavingName, updateSavings } = useFinanceContext()
     const [amountToAdd, setAmountToAdd] = useState('')
 
     const targetAmount = data.target_amount
@@ -14,28 +14,30 @@ function SavingsItem({data}) {
         await axios.delete(`/savings_items/${data.id}`, { withCredentials: true })
         .catch(err => console.error(err))
         await setUpdateSavings(Math.random())
+        setShowDisplay(false)
     }
 
+    const handleClick = () => {
+        setSavingTotal(data.target_amount)
+        setSavingCurrent(data.current_amount)
+        setSavingName(data.name)
+        setShowDisplay(true)
+    }
     const handleChange = (e) => setAmountToAdd(e.target.value)
+    const handleBlur = (e) => {if (!e.currentTarget.contains(e.relatedTarget)) setShowDisplay(false)}
 
     async function handleSubmit(e) {
         e.preventDefault()
-        await axios.patch(`/savings_items/${data.id}`, {savings_item: {current_amount: amountToAdd}}, { withCredentials: true })
+        await axios.patch(`/savings_items/${data.id}`, {savings_item: {current_amount: data.current_amount + parseInt(amountToAdd)}}, { withCredentials: true })
         .catch(err => console.error(err))
+        await setSavingCurrent(data.current_amount)
         await setUpdateSavings(Math.random())
         setAmountToAdd('')
     }
 
-    function handleClick() {
-        setShowDisplay(true)
-        setSavingCurrent(currentAmount)
-        setSavingTotal(targetAmount)
-        setSavingName(data.name)
-    }
-
-    function handleBlur(e) {
-        if (!e.currentTarget.contains(e.relatedTarget)) setShowDisplay(false)
-    }
+    useEffect(() => {
+        setSavingCurrent(data.current_amount)
+    }, [data.current_amount, setSavingCurrent, updateSavings])
 
     return (
         <div tabIndex="1" onClick={handleClick} onBlur={handleBlur} className="savings-card" >
@@ -62,8 +64,6 @@ function SavingsItem({data}) {
 export const SavingItemDisplay = () => {
     const { showDisplay, savingCurrent, savingTotal, savingName } = useFinanceContext()
     const percentage = (((100 * savingCurrent) / savingTotal) < 99 ? ((100 * savingCurrent) / savingTotal) : 100)
-
-    console.log(savingCurrent)
 
     return (
         <div className='savings-progress-main-container'>

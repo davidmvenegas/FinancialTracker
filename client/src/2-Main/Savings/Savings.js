@@ -45,16 +45,16 @@ function Savings() {
                     <h1 className='main-section-title'>My Saving Goals</h1>
                     <p className='main-section-description'>Save for the Future</p>
                 </div>
-                <SavingItemDisplay/>
+                <SavingItemDisplay />
             </div>
             <div className="savings-form-container">
                 <form className='income-search-form'>
                     <input onChange={handleSearch} className='income-search-box' type="text" placeholder='Search' />
                 </form>
                 <form onSubmit={handleAddSaving} className="savings-form">
-                    <input onChange={handleTitleChange} value={title} id='first-saving-form' type="text" placeholder='Title...' maxLength="20" />
-                    <input onChange={handleAmountChange} value={amount} type="number" placeholder='Amount...' />
-                    <input onChange={handleDateChange} value={date} className='input-type-date' id='last-saving-form' type="date"/>
+                    <input onChange={handleTitleChange} value={title} id='first-saving-form' type="text" placeholder='Title...' maxLength="20" required />
+                    <input onChange={handleAmountChange} value={amount} type="number" placeholder='Amount...' required />
+                    <input onChange={handleDateChange} value={date} className='input-type-date' id='last-saving-form' type="date" required />
                     <button type="submit">Create Goal</button>
                 </form>
             </div>
