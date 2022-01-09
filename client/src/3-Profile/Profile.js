@@ -9,7 +9,7 @@ function Profile() {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
-    const [picture, setPicture] = useState('')
+    const [username, setUsername] = useState('')
     const [age, setAge] = useState('')
     const [gender, setGender] = useState('')
     const [maritalStatus, setMaritalStatus] = useState('')
@@ -17,12 +17,12 @@ function Profile() {
     const [trigger, setTrigger] = useState()
     const [profileData, setProfileData] = useState()
 
-    const activeInput = ((firstName !== '') || (lastName !== '') || (email !== '') || (picture !== '') || (age !== '') || (gender !== '') || (maritalStatus !== '') || (annualIncome !== ''))
+    const activeInput = ((firstName !== '') || (lastName !== '') || (email !== '') || (username !== '') || (age !== '') || (gender !== '') || (maritalStatus !== '') || (annualIncome !== ''))
 
     const firstNameChange = (e) => setFirstName(e.target.value)
     const lastNameChange = (e) => setLastName(e.target.value)
     const emailChange = (e) => setEmail(e.target.value)
-    const pictureChange = (e) => setPicture(e.target.value)
+    const usernameChange = (e) => setUsername(e.target.value)
     const ageChange = (e) => setAge(e.target.value)
     const genderChange = (e) => setGender(e.target.value)
     const maritalStatusChange = (e) => setMaritalStatus(e.target.value)
@@ -34,7 +34,7 @@ function Profile() {
             user: {
                 first_name: ((firstName !== '') ? firstName : user.user.first_name),
                 last_name: ((lastName !== '') ? lastName : user.user.last_name),
-                profile_picture: ((picture !== '') ? picture : user.user.profile_picture),
+                username: ((username !== '') ? username : user.user.username),
                 email: ((email !== '') ? email : user.user.email),
                 age: ((age !== '') ? age : user.user.age),
                 gender: ((gender !== '') ? gender : user.user.gender),
@@ -42,7 +42,6 @@ function Profile() {
                 annual_income: ((annualIncome !== '') ? annualIncome : user.user.annual_income)
             }
         }, { withCredentials: true })
-        .then(res => console.log(res))
         .catch(err => console.error(err))
         setTrigger(Math.random())
     }
@@ -71,13 +70,13 @@ function Profile() {
                             <span className="profile-input-focus"></span>
                         </div>
                         <div className="profile-input-wrapper">
-                            <span className="profile-input-label">Email</span>
-                            <input onChange={emailChange} className="profile-input" type="email" placeholder={profileData?.email} />
+                            <span className="profile-input-label">Username</span>
+                            <input onChange={usernameChange} className="profile-input" type="text" placeholder={profileData?.username} />
                             <span className="profile-input-focus"></span>
                         </div>
                         <div className="profile-input-wrapper">
-                            <span className="profile-input-label">Upload Profile Picture</span>
-                            <input onChange={pictureChange} className="profile-input" id='photo-file-input' type="file" accept="image/png, image/gif, image/jpeg" />
+                            <span className="profile-input-label">Email</span>
+                            <input onChange={emailChange} className="profile-input" type="email" placeholder={profileData?.email} />
                             <span className="profile-input-focus"></span>
                         </div>
                         <div className="profile-input-wrapper">

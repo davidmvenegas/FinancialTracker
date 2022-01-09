@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_09_172232) do
+ActiveRecord::Schema.define(version: 2022_01_09_172605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 2022_01_09_172232) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_housings_on_user_id"
+  end
+
+  create_table "image_elements", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_image_elements_on_user_id"
   end
 
   create_table "income_items", force: :cascade do |t|
@@ -139,6 +146,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_172232) do
   add_foreign_key "entertainments", "users"
   add_foreign_key "foods", "users"
   add_foreign_key "housings", "users"
+  add_foreign_key "image_elements", "users"
   add_foreign_key "income_items", "users"
   add_foreign_key "others", "users"
   add_foreign_key "personal_cares", "users"

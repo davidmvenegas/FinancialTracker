@@ -10,11 +10,13 @@ function Landing() {
     const [logEmail, setLogEmail] = useState("")
     const [logPassword, setLogPassword] = useState("")
     const [regEmail, setRegEmail] = useState("")
+    const [username, setUsername] = useState("")
     const [regPassword, setRegPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
 
     const handleLogEmailChange = (e) => setLogEmail(e.target.value)
     const handleLogPasswordChange = (e) => setLogPassword(e.target.value)
+    const handleUsernameChange = (e) => setUsername(e.target.value)
     const handleRegEmailChange = (e) => setRegEmail(e.target.value)
     const handleRegPasswordChange = (e) => setRegPassword(e.target.value)
     const handlePasswordConfirmationChange = (e) => setPasswordConfirmation(e.target.value)
@@ -55,6 +57,7 @@ function Landing() {
         e.preventDefault()
         axios.post('/registrations', {
             user: {
+                username: username,
                 email: regEmail,
                 password: regPassword,
                 passwordConfirmation: passwordConfirmation
@@ -114,7 +117,7 @@ function Landing() {
                         <form onSubmit={handleRegSubmit} className="register-form form-hidden">
                             <h3>Register</h3>
                             <div className="form-group">
-                                <input type="text" placeholder="Name" className="form-control" required />
+                                <input onChange={handleUsernameChange} type="text" placeholder="Name" className="form-control" required />
                                 <span className="landing-input-focus"></span>
                             </div>
                             <div className="form-group">
