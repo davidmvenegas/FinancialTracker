@@ -3,7 +3,7 @@ import { useFinanceContext } from '../../FinanceContext'
 import axios from 'axios'
 
 function SavingsItem({data}) {
-    const { setUpdateSavings, setShowDisplay, setSavingCurrent, setSavingTotal, setSavingName, updateSavings } = useFinanceContext()
+    const { setUpdateSavings, setShowDisplay, setSavingCurrent, setSavingTotal, setSavingName } = useFinanceContext()
     const [amountToAdd, setAmountToAdd] = useState('')
 
     const targetAmount = data.target_amount
@@ -28,7 +28,11 @@ function SavingsItem({data}) {
 
     async function handleSubmit(e) {
         e.preventDefault()
-        await axios.patch(`/savings_items/${data.id}`, {savings_item: {current_amount: data.current_amount + parseInt(amountToAdd)}}, { withCredentials: true })
+        await axios.patch(`/savings_items/${data.id}`, {
+            savings_item: {
+                current_amount: data.current_amount + parseInt(amountToAdd)
+            }
+        }, { withCredentials: true })
         .catch(err => console.error(err))
         await setSavingCurrent(data.current_amount)
         await setUpdateSavings(Math.random())
@@ -37,7 +41,7 @@ function SavingsItem({data}) {
 
     useEffect(() => {
         setSavingCurrent(data.current_amount)
-    }, [data.current_amount, setSavingCurrent, updateSavings])
+    }, [data.current_amount, setSavingCurrent, setAmountToAdd])
 
     return (
         <div tabIndex="1" onClick={handleClick} onBlur={handleBlur} className="savings-card" >

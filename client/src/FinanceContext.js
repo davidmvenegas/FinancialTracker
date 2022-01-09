@@ -45,12 +45,6 @@ export const FinanceContextProvider = ({ children }) => {
         setLoggedInStatus("NOT_LOGGED_IN")
     }
 
-    useEffect(() => {
-        axios.get(`/savings_items`, { withCredentials: true })
-        .then(res => setSavingData(res.data))
-        .catch(err => console.error(err))
-    }, [updateSavings])
-
     const handleSearch = (e) => setSearch(e.target.value)
     const filteredItems = savingData.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
 
