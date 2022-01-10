@@ -264,4 +264,7 @@
         height: 2.125rem;
         margin-left: -3.5rem;
     }
+    #incomePlaceholder {
+        font-size: 1.65rem;
+    }
 }

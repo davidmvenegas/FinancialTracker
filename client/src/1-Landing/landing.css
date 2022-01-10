@@ -209,7 +209,7 @@
 @media(max-width: 767px){
 	.login-page .box{
 		flex:0 0 100%;
-		max-width: 100%;
+		max-width: 95%;
 	}
 }
 @media(max-width: 575px){
@@ -231,15 +231,19 @@
 		right:auto;
 	}
 	.login-logo-box {
-		top: 3.25rem;
-		padding-left: 2.5rem;
+		top: 5.5rem;
+		padding-left: 1rem;
+		text-align: center;
 	}
 	.login-logo-box h2 {
-		font-size: 3.5rem;
+		font-size: 4.25rem;
 		font-weight: 700;
 	}
 	.login-page .box{
 		background-image: none;
-		background-color: #00000099;
+		background-color: #000000b4;
+	}
+	.login-logo-box img {
+		display: none;
 	}
 }

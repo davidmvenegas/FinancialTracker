@@ -110,7 +110,7 @@ function Income() {
                         </select>
                         <input id='descriptionID' onChange={handleDescriptionChange} className='income-form-header' value={description} type="text" placeholder='Description...' disabled={type === ''} required />
                         <input id='amountID' onChange={handleAmountChange} className='income-form-header' value={amount} type="number" placeholder='Amount...' disabled={description === ''} required />
-                        <select style={(type === 'income') ? {pointerEvents: 'none', opacity: '0'} : null} id='categoryID' onChange={handleCategoryChange} className="income-form-header income-form-select" disabled={(type === 'income') || (amount === '')} required >
+                        <select style={(type === 'income') ? {display: 'none'} : null} id='categoryID' onChange={handleCategoryChange} className="income-form-header income-form-select" disabled={(type === 'income') || (amount === '')} required >
                             <option value="" disabled selected hidden >Category...</option>
                             <option value="food">Food</option>
                             <option value="housing">Housing</option>

@@ -130,3 +130,28 @@
 .profile-submit-btn:hover {
     background-color: #888888;
 }
+
+@media (max-width: 500px) {
+    .profile-form {
+        grid-template-columns: 1fr;
+    }
+    .profile-submit-btn {
+        width: 27.5rem;
+        margin-left: 0;
+    }
+    .profile-title {
+        font-size: 2.85rem;
+        margin-left: 4.5rem;
+        font-weight: 600;
+        padding-bottom: 4rem;
+    }
+    .profile-wrapper {
+        width: 100%;
+        padding: 2.75rem 7.5rem;
+    }
+    .profile-go-back {
+        top: 2.725rem;
+        left: 3.25rem;
+        font-size: 1.75rem;
+    }
+}

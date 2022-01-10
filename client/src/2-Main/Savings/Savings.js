@@ -55,7 +55,7 @@ function Savings() {
             </div>
             <div className="savings-form-container">
                 <form className='income-search-form'>
-                    <input onChange={handleSearch} className='income-search-box' type="text" placeholder='Search' />
+                    <input onChange={handleSearch} className='savings-search-box' type="text" placeholder='Search' />
                 </form>
                 <form onSubmit={handleAddSaving} className="savings-form">
                     <input onChange={handleTitleChange} value={title} id='first-saving-form' type="text" placeholder='Title...' maxLength="20" required />
