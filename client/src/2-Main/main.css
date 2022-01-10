@@ -16,3 +16,15 @@
     text-transform: capitalize;
     text-align: center;
 }
+@media (max-width: 500px) {
+    html {
+        font-size: 50%;
+    }
+    .main-section-title {
+        font-weight: 600;
+        width: 100vw;
+    }
+    .main-section-description {
+        font-size: 1.7rem;
+    }
+}

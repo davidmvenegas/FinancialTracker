@@ -231,11 +231,15 @@
 		right:auto;
 	}
 	.login-logo-box {
-		top: 5.5rem;
+		top: 3.25rem;
 		padding-left: 2.5rem;
 	}
 	.login-logo-box h2 {
 		font-size: 3.5rem;
 		font-weight: 700;
+	}
+	.login-page .box{
+		background-image: none;
+		background-color: #00000099;
 	}
 }

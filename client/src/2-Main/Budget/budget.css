@@ -91,3 +91,17 @@
 #budget-pie {
     margin: -10rem 0;
 }
+
+@media (max-width: 1300px) {
+    .budget-header {
+        width: 75%;
+        margin: 3.5rem 0;
+    }
+    .budget-body {
+        margin: 1.5rem 0 4rem;
+        width: 77.5%;
+    }
+    #budget-pie {
+        height: 14rem;
+    }
+}

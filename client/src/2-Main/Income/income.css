@@ -176,4 +176,16 @@
     width: fit-content;
     transform: translate(-50%, -50%);
     color: #aaa;
+    border: none;
+}
+@media (max-width: 1300px) {
+    .income-header {
+        width: 77.5%;
+    }
+    .income-form-container {
+        width: 80%;
+    }
+    .income-body {
+        width: 80%;
+    }
 }
