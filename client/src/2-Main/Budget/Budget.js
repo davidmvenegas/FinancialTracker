@@ -124,24 +124,26 @@ function Budget() {
                     <h1 className='main-section-title'>Monthly Budget</h1>
                     <p className='main-section-description'>Keep Track of your Expenses</p>
                 </div>
-                <div className="budget-header-box2">
-                    <Pie id='budget-pie' data={pieData} options={pieOptions} />
-                </div>
-                <div className="budget-header-box3">
-                    <h2 className='budget-outline-title'>This Month...</h2>
-                    <div className="budget-outline-wrapper">
-                        <div className="budget-outline-item">
-                            <h4 className="budget-outline-name">Total Budget:</h4>
-                            <span className='budget-outline-amount'>${(isNaN(totalBudget) ? 0 : totalBudget)}</span>
-                        </div>
-                        <div className="budget-outline-item">
-                            <h4 className="budget-outline-name">Spending:</h4>
-                            <span className='budget-outline-amount'>${(isNaN(totalSpent) ? 0 : totalSpent)}</span>
-                        </div>
-                        <div className="budget-outline-separator"></div>
-                        <div className="budget-outline-item">
-                            <h4 className="budget-outline-name">Remaining:</h4>
-                            <span style={(isNaN(totalSpent) ? 0 : totalSpent) > (isNaN(totalBudget) ? 0 : totalBudget) ? {color: "red"} : {color: "black"}} className='budget-outline-amount'>${remaining}</span>
+                <div className="budgetResponsiveBox">
+                    <div className="budget-header-box2">
+                        <Pie id='budget-pie' data={pieData} options={pieOptions} />
+                    </div>
+                    <div className="budget-header-box3">
+                        <h2 className='budget-outline-title'>This Month...</h2>
+                        <div className="budget-outline-wrapper">
+                            <div className="budget-outline-item">
+                                <h4 className="budget-outline-name">Total Budget:</h4>
+                                <span className='budget-outline-amount'>${(isNaN(totalBudget) ? 0 : totalBudget)}</span>
+                            </div>
+                            <div className="budget-outline-item">
+                                <h4 className="budget-outline-name">Spending:</h4>
+                                <span className='budget-outline-amount'>${(isNaN(totalSpent) ? 0 : totalSpent)}</span>
+                            </div>
+                            <div className="budget-outline-separator"></div>
+                            <div className="budget-outline-item">
+                                <h4 className="budget-outline-name">Remaining:</h4>
+                                <span style={(isNaN(totalSpent) ? 0 : totalSpent) > (isNaN(totalBudget) ? 0 : totalBudget) ? {color: "red"} : {color: "black"}} className='budget-outline-amount'>${remaining}</span>
+                            </div>
                         </div>
                     </div>
                 </div>

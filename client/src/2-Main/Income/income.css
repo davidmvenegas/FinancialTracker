@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-between;
     width: 70%;
-    margin: 3rem 0;
+    margin: 3.25rem 0 3rem;
 }
 .income-category-title {
     font-size: 2.75rem;
@@ -178,6 +178,12 @@
     color: #aaa;
     border: none;
 }
+.incomeResponsiveBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+}
 @media (max-width: 1300px) {
     .income-header {
         width: 77.5%;
@@ -187,5 +193,75 @@
     }
     .income-body {
         width: 80%;
+    }
+}
+@media (max-width: 500px) {
+    .income-container {
+        height: 80rem;
+    }
+    .income-header {
+        flex-direction: column;
+        width: 100%;
+        margin: 1.75rem 0 1rem;
+    }
+    .income-category-title {
+        font-size: 2rem;
+    }
+    .income-form-container {
+        width: 92.5%;
+    }
+    .income-body {
+        width: 90%;
+    }
+    .incomeResponsiveBox {
+        margin-top: 2.5rem;
+        width: 82.5%;
+    }
+    .income-category-amount span {
+        font-size: 2.5rem;
+    }
+    .income-category-amount h2 {
+        font-size: 2.25rem;
+    }
+    .income-box {
+        flex-direction: column-reverse;
+    }
+    .income-form {
+        width: 100%;
+    }
+    .income-form-header {
+        font-size: 1.25rem;
+        height: 3.5rem;
+        padding-left: .25rem;
+    }
+    .income-submit-button {
+        font-size: 1.35rem;
+        margin-right: 0;
+        padding: .85rem 1.125rem;
+        border-radius: .25rem;
+    }
+    .income-search-form {
+        margin-top: 1rem;
+        margin-bottom: -.5rem;
+        width: 97.5%;
+    }
+    .income-search-box {
+        height: 4rem;
+        border-radius: .35rem;
+        padding-left: 1.25rem;
+        font-size: 1.65rem;
+    }
+    .income-table-body {
+        min-height: 39rem;
+        max-height: 39rem;
+        font-size: smaller;
+    }
+    .income-body table th {
+        font-size: smaller;
+    }
+    #delete-income-item {
+        width: 2.125rem;
+        height: 2.125rem;
+        margin-left: -3.5rem;
     }
 }

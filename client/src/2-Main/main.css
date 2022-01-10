@@ -22,9 +22,12 @@
     }
     .main-section-title {
         font-weight: 600;
+        font-size: 3.75rem;
         width: 100vw;
+        line-height: 1.25;
     }
     .main-section-description {
         font-size: 1.7rem;
+        padding-top: .5rem;
     }
 }

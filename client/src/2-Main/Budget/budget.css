@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-between;
     width: 60%;
-    margin: 3.5rem 0;
+    margin: 4rem 0 3.5rem;
 }
 .budget-header-box3 {
     height: 16rem;
@@ -91,6 +91,12 @@
 #budget-pie {
     margin: -10rem 0;
 }
+.budgetResponsiveBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 65%;
+}
 
 @media (max-width: 1300px) {
     .budget-header {
@@ -101,7 +107,63 @@
         margin: 1.5rem 0 4rem;
         width: 77.5%;
     }
+}
+    @media (max-width: 500px) {
+    .budget-header {
+        width: 100%;
+    }
+    .budget-header {
+        flex-direction: column;
+    }
     #budget-pie {
-        height: 14rem;
+        margin: -3.5rem -5rem;
+    }
+    .budget-body {
+        width: 90%;
+    }
+    .budget-container {
+        height: 103rem;
+    }
+    .budget-body table {
+        font-size: 2rem;
+    }
+    .budgetResponsiveBox {
+        flex-direction: column;
+        width: 90%;
+    }
+    .budget-header-box3 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 7rem;
+        width: 100%;
+        padding: 0 1.5rem;
+        margin: -.5rem 0 -2rem;
+    }
+    .budget-outline-title {
+        margin-top: 0;
+        font-size: 1.8rem;
+        width: 20%;
+    }
+    .budget-outline-wrapper {
+        display: flex;
+        margin-top: 0;
+        width: 80%;
+    }
+    .budget-outline-item {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        gap: .5rem;
+    }
+    .budget-outline-name {
+        font-size: 1.65rem;
+        font-weight: 500;
+    }
+    .budget-outline-separator {
+        margin: 0 .5rem;
+        height: 100%;
+        width: .2rem;
+        background-color: #888;
     }
 }

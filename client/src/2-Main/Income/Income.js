@@ -82,17 +82,19 @@ function Income() {
                     <h1 className='main-section-title'>Personal Ledger</h1>
                     <p className='main-section-description'>Organize Your Finances</p>
                 </div>
-                <div className="income-header-box2">
-                    <h2 className='income-category-title'>Income</h2>
-                    <div className="income-category-amount"><h2><span>$</span> {totalIncome}</h2></div>
-                </div>
-                <div className="income-header-box3">
-                    <h2 className='income-category-title'>Expenses</h2>
-                    <div className="income-category-amount"><h2><span>$</span> {totalExpenses}</h2></div>
-                </div>
-                <div className="income-header-box4">
-                    <h2 className='income-category-title'>Total Balance</h2>
-                    <div className="income-category-amount"><h2><span>$</span> {(totalIncome - totalExpenses)}</h2></div>
+                <div className="incomeResponsiveBox">
+                    <div className="income-header-box2">
+                        <h2 className='income-category-title'>Income</h2>
+                        <div className="income-category-amount"><h2><span>$</span> {totalIncome}</h2></div>
+                    </div>
+                    <div className="income-header-box3">
+                        <h2 className='income-category-title'>Expenses</h2>
+                        <div className="income-category-amount"><h2><span>$</span> {totalExpenses}</h2></div>
+                    </div>
+                    <div className="income-header-box4">
+                        <h2 className='income-category-title'>Total Balance</h2>
+                        <div className="income-category-amount"><h2><span>$</span> {(totalIncome - totalExpenses)}</h2></div>
+                    </div>
                 </div>
             </div>
             <div className="income-form-container">
