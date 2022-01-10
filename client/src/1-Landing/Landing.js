@@ -20,7 +20,9 @@ function Landing() {
     const [logSlide, setLogSlide] = useState('')
     const [regSlide, setRegSlide] = useState('form-hidden')
     const [passSlide, setPassSlide] = useState('form-hidden')
+    const [reset, setReset] = useState('')
 
+    const handleResetChange = (e) => setReset(e.target.value)
     const handleLogEmailChange = (e) => setLogEmail(e.target.value)
     const handleLogPasswordChange = (e) => setLogPassword(e.target.value)
     const handleUsernameChange = (e) => setUsername(e.target.value)
@@ -104,20 +106,26 @@ function Landing() {
         }
     }
 
+    function handleReset(e) {
+        e.preventDefault()
+        swal("Email Reset", "Please check your email for further instructions", "success")
+        setReset('')
+    }
+
     return (
         <div>
-        <Particles options={{
+        <Particles className='particleJS' options={{
             interactivity: {
                 events: {onClick: {enable: true, mode: "push"},
                 onHover: {enable: true, mode: "repulse"}},
                 modes: {bubble: {distance: 800, duration: 2, opacity: 1, size: 500},
-                push: {quantity: 4}, repulse: {distance: 100, duration: 1}
+                push: {quantity: 4}, repulse: {distance: 75, duration: 1}
             }},
             particles: {
-                color: {value: ["#666"]},
-                links: {color: "#111", distance: 200, enable: true, opacity: 1, width: .125},
+                color: {value: "#bbb"},
+                links: {color: "#222", distance: 200, enable: true, opacity: .5, width: .125},
                 move: {direction: "none", enable: true, outMode: "bounce", random: true, speed: 2.5, straight: false},
-                number: {value: 75},
+                number: {value: 120},
                 opacity: {value: 1}
             }}}/>
             <div className="login-page">
@@ -171,13 +179,13 @@ function Landing() {
                             <button type="submit" className="submit-btn">Register</button>
                             <p onClick={clickedResetPassword} className="lost-pass-btn">Lost Your Password ?</p>
                         </form>
-                        <form className={`lost-password-form ${passSlide}`}>
-                            <h3>Lost Your Password ?</h3>
-                            <h5>You will receive a link to create a new password via email.</h5>
+                        <form onSubmit={handleReset} className={`lost-password-form ${passSlide}`}>
+                            <h3 id='resetText'>Lost Your Password ?</h3>
+                            <h5 id='resetText'>You will receive a link to create a new password via email.</h5>
                             <div className="form-group">
-                                <input type="text" placeholder="Email Address" className="form-control" required />
+                                <input type="email" placeholder="Email Address" className="form-control" required onChange={handleResetChange} value={reset} />
+                                <button type="submit" id='resetPaswordBtn' className="submit-btn">Reset Password</button>
                             </div>
-                            <button type="submit" className="submit-btn">Reset Password</button>
                             <p><span className="login-btn" onClick={clickedLoginBtn} >Login</span> | <span onClick={clickedRegisterBtn} className="register-btn">Register</span></p>
                         </form>
                     </div>

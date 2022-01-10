@@ -1,7 +1,7 @@
 .profile-go-back {
     position: absolute;
     top: 2.5rem;
-    left: 2.5rem;
+    left: 3rem;
     font-size: 1.8rem;
     text-decoration: none;
     color: white;
@@ -20,7 +20,7 @@
     justify-content: center;
 }
 .profile-wrapper {
-    width: 65%;
+    width: 70%;
     height: auto;
     background: whitesmoke;
     padding: 2.75rem 7.5rem;

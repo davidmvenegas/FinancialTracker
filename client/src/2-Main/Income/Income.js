@@ -136,6 +136,7 @@ function Income() {
                         {filteredItems.map(data => {
                             return <IncomeItem key={data.id} data={data} /> 
                         })}
+                        {(filteredItems.length === 0) && <p id='incomePlaceholder'>Add a transaction to begin tracking your finances</p>}
                     </tbody>
                 </table>
             </div>

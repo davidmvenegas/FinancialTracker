@@ -1,6 +1,6 @@
 .income-container {
     height: 77.5rem;
-    background-color: whitesmoke;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -70,7 +70,7 @@
     align-items: center;
     width: 72.5%;
     justify-content: space-between;
-    background-color: whitesmoke;
+    background-color: white;
     border-radius: .5rem;
 }
 .income-form-header {
@@ -80,7 +80,7 @@
     height: 3.75rem;
     margin: 1rem 0;
     color: black;
-    background-color: whitesmoke;
+    background-color: white;
     padding-left: .5rem;
     border: none;
     border-bottom: 1px solid #888;
@@ -114,10 +114,11 @@
 .income-body {
     margin: 2rem 0 4rem;
     width: 70%;
-    box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 20px, rgba(0, 0, 0, 0.17) 0px 4px 6px;
     border-bottom: 4px solid #009879;
 }
 .income-table-body {
+    position: relative;
     display: block;
     min-height: 38.5rem;
     max-height: 38.5rem;
@@ -166,4 +167,13 @@
 }
 #delete-income-item:active {
     transform: scale(.9);
+}
+#incomePlaceholder {
+    position: absolute;
+    font-size: 2.25rem;
+    top: 45%;
+    left: 50%;
+    width: fit-content;
+    transform: translate(-50%, -50%);
+    color: #aaa;
 }

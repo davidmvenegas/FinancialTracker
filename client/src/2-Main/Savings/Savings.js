@@ -68,6 +68,7 @@ function Savings() {
                 {filteredItems.map(item => {
                     return <SavingsItem key={item.id} data={item} />
                 })}
+                {(filteredItems.length === 0) && <p id='savingsPlaceholder'>Add a goal to begin tracking its progress</p>}
             </div>
         </div>
     )

@@ -5,7 +5,7 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background: radial-gradient(circle, #fff 45%, #009879 100%);
+	background: radial-gradient(circle, #fff 45%, #00987a9a 100%);
 }
 .login-logo-box {
 	position: absolute;
@@ -50,7 +50,7 @@
 	transition: all 0.5s ease-in-out;
 }
 .login-page .box.slide-active{
-	background-position: 27.65rem center;
+	background-position: 27.5rem center;
 }
 .login-page .box::before{
 	content: '';
@@ -198,6 +198,13 @@
 .form-control:focus + .landing-input-focus::before {
     width: 100%;
 }
+#resetPaswordBtn {
+	margin-top: 2.5rem;
+	font-size: 1.5rem;
+}
+#resetText {
+	text-align: center;
+}
 
 @media(max-width: 767px){
 	.login-page .box{
@@ -222,5 +229,13 @@
 	}
 	.login-page .box.slide-active .form{
 		right:auto;
+	}
+	.login-logo-box {
+		top: 5.5rem;
+		padding-left: 2.5rem;
+	}
+	.login-logo-box h2 {
+		font-size: 3.5rem;
+		font-weight: 700;
 	}
 }
