@@ -1,1 +1,1 @@
-# Financial Tracker
+# The Financial Tracker
