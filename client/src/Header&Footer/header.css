@@ -58,7 +58,7 @@
     background-color: #444444;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1050px) {
     .header-container {
         padding: 0rem;
     }

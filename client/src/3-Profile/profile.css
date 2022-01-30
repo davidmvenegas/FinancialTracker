@@ -30,6 +30,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 5rem;
+    margin: 5rem auto;
 }
 .profile-title {
     display: block;
@@ -117,7 +118,7 @@
     position: absolute;
     width: 32.5rem;
     height: 5rem;
-    margin-top: .5rem;
+    margin-top: 3rem;
     margin-left: 110%;
     color: whitesmoke;
     background-color: #666666;
@@ -131,9 +132,10 @@
     background-color: #888888;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1050px) {
     .profile-form {
         grid-template-columns: 1fr;
+        margin: 1rem auto;
     }
     .profile-submit-btn {
         width: 27.5rem;
@@ -151,7 +153,7 @@
     }
     .profile-go-back {
         top: 2.725rem;
-        left: 3.25rem;
-        font-size: 1.75rem;
+        left: 2.5rem;
+        font-size: 1.5rem;
     }
 }

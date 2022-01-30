@@ -108,7 +108,7 @@
         width: 77.5%;
     }
 }
-    @media (max-width: 500px) {
+    @media (max-width: 1050px) {
     .budget-header {
         width: 100%;
     }

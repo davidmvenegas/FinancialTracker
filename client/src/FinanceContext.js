@@ -1,5 +1,5 @@
 import { React, useContext, createContext, useState } from 'react'
-export const allFinanceContext = createContext({});
+export const allFinanceContext = createContext({})
 export const useFinanceContext = () => useContext(allFinanceContext)
 
 export const FinanceContextProvider = ({ children }) => {
@@ -22,13 +22,8 @@ export const FinanceContextProvider = ({ children }) => {
     }
 
     function handleSuccesfulLog(data) {
-        if (data.logged_in) {
-            setUser(data)
-            setLoggedInStatus("LOGGED_IN")
-        } else if (!data.logged_in) {
-            setUser({})
-            setLoggedInStatus("NOT_LOGGED_IN")
-        }
+        setUser(data)
+        setLoggedInStatus("LOGGED_IN")
         return data
     }
 

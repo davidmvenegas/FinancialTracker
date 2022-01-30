@@ -13,12 +13,6 @@ function Income() {
     const [incomeItemData, setIncomeItemData] = useState([])
     const [search, setSearch] = useState("")
 
-    let today = new Date()
-    let mm = today.getMonth()+1
-    let dd = today.getDate()
-    let yyyy = today.getFullYear()
-    let todaysDate = (`${mm}/${dd}/${yyyy}`)
-
     const typeEl = document.getElementById('typeID')
     const descriptionEl = document.getElementById('descriptionID')
     const categoryEl = document.getElementById('categoryID')
@@ -47,6 +41,11 @@ function Income() {
     async function handleAddIncomeItem(e) {
         e.preventDefault()
         clearForm()
+        const today = new Date()
+        const mm = today.getMonth() + 1
+        const dd = today.getDate()
+        const yyyy = today.getFullYear()
+        const todaysDate = (`${mm}/${dd}/${yyyy}`)
         await axios.post('/income_items', {
             income_item: {
                 user_id: user.user.id,
@@ -100,7 +99,7 @@ function Income() {
             <div className="income-form-container">
                 <div className="income-box">
                     <form className='income-search-form'>
-                        <input onChange={handleSearch} className='income-search-box' type="text" placeholder='Search' />
+                        <input onChange={handleSearch} className='income-search-box' type="text" placeholder='Search transactions...' />
                     </form>
                     <form onSubmit={handleAddIncomeItem} className="income-form">
                         <select id='typeID' onChange={handleTypeChange} className='income-form-header income-form-select' required >

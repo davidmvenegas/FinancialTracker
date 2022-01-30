@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 70%;
+    width: 80%;
     margin: 3.25rem 0 3rem;
 }
 .income-category-title {
@@ -30,7 +30,7 @@
     font-weight: 400;
 }
 .income-form-container {
-    width: 70%;
+    width: 80%;
     border-radius: .5rem;
     margin: .85rem 0 .5rem;
     display: flex;
@@ -113,7 +113,7 @@
 }
 .income-body {
     margin: 2rem 0 4rem;
-    width: 70%;
+    width: 80%;
     box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 20px, rgba(0, 0, 0, 0.17) 0px 4px 6px;
     border-bottom: 4px solid #009879;
 }
@@ -181,8 +181,8 @@
 .incomeResponsiveBox {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 70%;
+    justify-content: space-around;
+    width: 80%;
 }
 @media (max-width: 1300px) {
     .income-header {
@@ -195,7 +195,7 @@
         width: 80%;
     }
 }
-@media (max-width: 500px) {
+@media (max-width: 1050px) {
     .income-container {
         height: 80rem;
     }

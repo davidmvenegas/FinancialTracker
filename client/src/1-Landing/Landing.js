@@ -99,7 +99,7 @@ function Landing() {
     
     function handlePendingLog(res) {
         handleSuccesfulLog(res.data)
-        if (res.data.status === 201){
+        if (res.data.status === 201) {
             navigate('/main')
         } else {
             swal("Oops!", "Wrong Password! Please try again or reset your password", "error")
@@ -122,10 +122,10 @@ function Landing() {
                 push: {quantity: 4}, repulse: {distance: 75, duration: 1}
             }},
             particles: {
-                color: {value: "#bbb"},
-                links: {color: "#222", distance: 200, enable: true, opacity: .5, width: .125},
+                color: {value: "#888"},
+                links: {color: "#000", distance: 200, enable: true, opacity: .5, width: .125},
                 move: {direction: "none", enable: true, outMode: "bounce", random: true, speed: 2.5, straight: false},
-                number: {value: 120},
+                number: {value: 50},
                 opacity: {value: 1}
             }}}/>
             <div className="login-page">
