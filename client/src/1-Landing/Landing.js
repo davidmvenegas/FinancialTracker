@@ -20,9 +20,7 @@ function Landing() {
     const [logSlide, setLogSlide] = useState('')
     const [regSlide, setRegSlide] = useState('form-hidden')
     const [passSlide, setPassSlide] = useState('form-hidden')
-    const [reset, setReset] = useState('')
 
-    const handleResetChange = (e) => setReset(e.target.value)
     const handleLogEmailChange = (e) => setLogEmail(e.target.value)
     const handleLogPasswordChange = (e) => setLogPassword(e.target.value)
     const handleUsernameChange = (e) => setUsername(e.target.value)
@@ -85,6 +83,25 @@ function Landing() {
         }
     }
 
+    function handleGuestLogin() {
+        let chars = 'abcdefghijklmnopqrstuvwxyz1234567890';
+        let string = ''
+        for(let i = 0; i < 15; i++) string += chars[Math.floor(Math.random() * chars.length)]
+        let guestEmail = string + '@gmail.com'
+        axios.post('/registrations', {
+            user: {
+                username: "GUEST_USERNAME",
+                email: guestEmail,
+                password: "123456",
+                passwordConfirmation: "123456"
+            }
+        }, { withCredentials: true })
+        .then(res => {
+            handleSuccesfulAuth(res.data)
+            navigate('/main')
+        })
+    }
+
     function handleLogSubmit(e) {
         e.preventDefault()
         axios.post('/sessions', {
@@ -104,12 +121,6 @@ function Landing() {
         } else {
             swal("Oops!", "Wrong Password! Please try again or reset your password", "error")
         }
-    }
-
-    function handleReset(e) {
-        e.preventDefault()
-        swal("Email Reset", "Please check your email for further instructions", "success")
-        setReset('')
     }
 
     return (
@@ -156,7 +167,8 @@ function Landing() {
                                 <span className="landing-input-focus"></span>
                             </div>
                             <button type="submit" className="submit-btn">Login</button>
-                            <p onClick={clickedResetPassword} className="lost-pass-btn">Lost Your Password ?</p>
+                            <p>OR</p>
+                            <p onClick={clickedResetPassword} id='guestContinue' className="lost-pass-btn">Continue as Guest</p>
                         </form>
                         <form onSubmit={handleRegSubmit} className={`register-form ${regSlide}`}>
                             <h3>Register</h3>
@@ -177,16 +189,15 @@ function Landing() {
                                 <span className="landing-input-focus"></span>
                             </div>
                             <button type="submit" className="submit-btn">Register</button>
-                            <p onClick={clickedResetPassword} className="lost-pass-btn">Lost Your Password ?</p>
+                            <p>OR</p>
+                            <p onClick={clickedResetPassword} id='guestContinue' className="lost-pass-btn">Continue as Guest</p>
                         </form>
-                        <form onSubmit={handleReset} className={`lost-password-form ${passSlide}`}>
-                            <h3 id='resetText'>Lost Your Password ?</h3>
-                            <h5 id='resetText'>You will receive a link to create a new password via email.</h5>
+                        <form className={`lost-password-form ${passSlide}`}>
+                            <h3 id='resetText'>Click to Continue as Guest</h3>
                             <div className="form-group">
-                                <input type="email" placeholder="Email Address" className="form-control" required onChange={handleResetChange} value={reset} />
-                                <button type="submit" id='resetPaswordBtn' className="submit-btn">Reset Password</button>
+                                <button onClick={() => handleGuestLogin()} id='resetPaswordBtn' className="submit-btn">Welcome</button>
                             </div>
-                            <p><span className="login-btn" onClick={clickedLoginBtn} >Login</span> | <span onClick={clickedRegisterBtn} className="register-btn">Register</span></p>
+                            <p><span className="login-btn" onClick={clickedLoginBtn}>Go to Login</span> | <span onClick={clickedRegisterBtn} className="register-btn">Go to Register</span></p>
                         </form>
                     </div>
                 </div>
