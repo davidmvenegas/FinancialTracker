@@ -98,7 +98,7 @@ function Landing() {
         }, { withCredentials: true })
         .then(res => {
             handleSuccesfulAuth(res.data)
-            navigate('/main')
+            setTimeout(() => {navigate('/main')}, 500)
         })
     }
 

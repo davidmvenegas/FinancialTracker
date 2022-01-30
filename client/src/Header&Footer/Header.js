@@ -36,7 +36,7 @@ function Header() {
                 </Link>
                 {guest ? 
                 <div className="header-box2">
-                    <button className='header-guest' onClick={() => handleLogoutClick()}>RETURN TO LOGIN</button>
+                    <button className='header-guest' onClick={() => handleLogoutClick()}>LOG OUT</button>
                 </div>
                 :
                 <div className="header-box2">

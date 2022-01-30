@@ -19,6 +19,7 @@ export const FinanceContextProvider = ({ children }) => {
     function handleSuccesfulAuth(data) {
         setUser(data)
         setLoggedInStatus("LOGGED_IN")
+        return data
     }
 
     function handleSuccesfulLog(data) {
