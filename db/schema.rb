@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_172232) do
     t.string "name"
     t.float "amount"
     t.string "category"
-    t.date "date"
+    t.string "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_income_items_on_user_id"

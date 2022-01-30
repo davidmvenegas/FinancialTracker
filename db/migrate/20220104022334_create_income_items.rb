@@ -5,7 +5,7 @@ class CreateIncomeItems < ActiveRecord::Migration[6.1]
       t.string :name
       t.float :amount
       t.string :category
-      t.date :date
+      t.string :date
 
       t.timestamps
     end
